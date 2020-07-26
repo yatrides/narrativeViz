@@ -6,7 +6,7 @@
 <title>Gender equality index</title>
 <style>
 #headerDiv {
-  background-image:linear-gradient(to right,rgb(255, 182, 255),white,lightblue);
+  background-image:linear-gradient(rgb(255, 182, 255),lightpink,white);
   text-align: center;
   height: 80px;
   width: auto;
@@ -15,15 +15,19 @@ h1{
   color:indigo;
   font: 32px Arial, sans-serif;
 }
+body{
+ color:indigo;
+ font: 20px Arial, sans-serif;
+}
 </style>
 </head>
 <body onload='init()'>
   
 <div id="headerDiv">
-  <h1>Regional composite gender equality index</h1>
+  <h1>Female labor force across time</h1>
 </div>
 <div id="dropdowns">
-  <select id="groupButton"></select>
+  Female participation at work: <select id="groupButton"></select>
 </div>
 <div id="chart">
   <svg> </svg>

@@ -3,7 +3,7 @@ async function init(){
     var margin = {top: 10, right: 100, bottom: 30, left: 30},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
-    var crange = ['blue','pink'];
+    var crange = ['purple','pink','salmon'];
 
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
@@ -18,7 +18,7 @@ async function init(){
     console.log(data);  
     
     //list of groups 
-    var allGroup =["Entity","Year"] 
+    var allGroup =["Proportion of Labor Force Who are Women","Avg weekly hours worked by woman","Public spending on Family Benefits"] 
     // add the options to the button
     d3.select("#groupButton")
       .selectAll('myOptions')
