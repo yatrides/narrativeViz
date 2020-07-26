@@ -3,6 +3,7 @@ async function init(){
     var margin = {top: 10, right: 100, bottom: 30, left: 30},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
+    var crange = ['blue','pink'];
 
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
@@ -30,7 +31,7 @@ async function init(){
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)
-      .range(d3.schemeSet2);
+      .range(crange);
 
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
@@ -55,7 +56,7 @@ async function init(){
           .x(function(d) { return x(+d.time) })
           .y(function(d) { return y(+d.valueA) })
         )
-        .attr("stroke", function(d){ return myColor("valueA") })
+        .attr("stroke", function(d){ return myColor() })
         .style("stroke-width", 4)
         .style("fill", "none")
 
@@ -66,7 +67,6 @@ async function init(){
       var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
 
       // Give these new data to update line
-      line
           .datum(dataFilter)
           .transition()
           .duration(1000)
