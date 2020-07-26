@@ -39,12 +39,12 @@ async function init(){
         .domain([new Date("1950-01-01"),new Date("2000-01-01")])
         .range([ 0, width ])
 
-    var x = d3.axisBottom(xScale)
+    var xAxis = d3.axisBottom(xScale)
       .tickFormat(d3.timeFormat("%Y"));
-      
+
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(xAxis);
 
     // Add Y axis
     var y = d3.scaleLinear()
