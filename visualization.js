@@ -18,7 +18,7 @@ async function init(){
     console.log(data);  
     
     //list of groups 
-    var allGroup =["Proportion of Labor Force Who are Women","Avg weekly hours worked by woman","Public spending on Family Benefits"] 
+    var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
     // add the options to the button
     d3.select("#groupButton")
       .selectAll('myOptions')
@@ -55,7 +55,7 @@ async function init(){
         .datum(data)
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Year) })
-          .y(function(d) { return y(+d.Equality_index) })
+          .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
         .attr("stroke", function(d) { return myColor() })
         .style("stroke-width", 4)
