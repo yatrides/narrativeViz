@@ -36,7 +36,8 @@ async function init(){
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
       .domain(["1950","2000"])
-      .range([ 0, width ]);
+      .range([ 0, width ])
+      .tickFormat(d3.time.format("%Y"));
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
@@ -56,7 +57,7 @@ async function init(){
           .x(function(d) { return x(+d.Year) })
           .y(function(d) { return y(+d.Equality_index) })
         )
-        .attr("stroke", function(d){ return myColor() })
+        .attr("stroke", function(d) { return myColor() })
         .style("stroke-width", 4)
         .style("fill", "none")
 
