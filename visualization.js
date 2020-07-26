@@ -32,10 +32,10 @@ async function init(){
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)
       .range(crange);
-
+   
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-      .domain([1950,2000])
+      .domain(["1950","2000"])
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
