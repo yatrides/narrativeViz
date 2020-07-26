@@ -42,7 +42,7 @@ async function init(){
       .call(d3.axisBottom(x));
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0,20])
+      .domain( [1950,2000])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
@@ -53,8 +53,8 @@ async function init(){
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) { return x(+d.time) })
-          .y(function(d) { return y(+d.valueA) })
+          .x(function(d) { return x(+d.Year) })
+          .y(function(d) { return y(+d.Equality_index) })
         )
         .attr("stroke", function(d){ return myColor() })
         .style("stroke-width", 4)
@@ -64,14 +64,14 @@ async function init(){
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
+      var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
 
       // Give these new data to update line
           .datum(dataFilter)
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(+d.time) })
+            .x(function(d) { return x(+d.Year) })
             .y(function(d) { return y(+d.value) })
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
