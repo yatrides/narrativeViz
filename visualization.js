@@ -17,7 +17,7 @@ async function init(){
     console.log(data);  
     
     //list of groups 
-    var allGroup =["Entity,Year"] 
+    var allGroup =["Entity","Year"] 
     // add the options to the button
     d3.select("#groupButton")
       .selectAll('myOptions')
