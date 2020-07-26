@@ -35,14 +35,14 @@ async function init(){
 
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-      .domain([0,10])
+      .domain([1950,2000])
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [1950,2000])
+      .domain( [50,80])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
