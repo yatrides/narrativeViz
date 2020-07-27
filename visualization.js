@@ -60,8 +60,7 @@ async function init(){
     var line = svg
       .append('g')
       .append("path")
-        .datum(data)
-        .filter(function(d) { return d.Entity =='Mexico' })
+        .datum(data.filter(function(d) { return d.Entity =='Mexico' }))
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
@@ -78,8 +77,7 @@ async function init(){
 
       // Give these new data to update line
         line
-          .datum(dataFilter)
-          .filter(function(d) { return d.Entity =='Mexico' })
+          .datum(dataFilter.filter(function(d) { return d.Entity =='Mexico' }))
           .transition()
           .duration(1000)
           .attr("d", d3.line()
