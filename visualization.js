@@ -35,8 +35,8 @@ async function init(){
    
     // Add X axis --> it is a date format
 
-    var xScale = d3.scaleTime()
-        .domain([new Date("1950-01-01"),new Date("2000-01-01")])
+    var x = d3.scaleTime()
+        .domain([new Date("1950"),new Date("2000")])
         .range([ 0, width ])
 
     var xAxis = d3.axisBottom(xScale)
@@ -59,7 +59,7 @@ async function init(){
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) { return xScale(+d.Year) })
+          .x(function(d) { return x(+newDate(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
         .attr("stroke", function(d) { return myColor() })
@@ -70,14 +70,14 @@ async function init(){
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
+      var dataFilter = data.map(function(d){return {time: new Date(d.Year), value:d[selectedGroup]} })
 
       // Give these new data to update line
           .datum(dataFilter)
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(+d.Year) })
+            .x(function(d) { return x(+new Date(d.Year)) })
             .y(function(d) { return y(+d.value) })
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
