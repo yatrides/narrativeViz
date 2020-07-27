@@ -38,8 +38,8 @@ async function init(){
       .range(crange);
    
     // Add X axis --> it is a date format
-    minYear=d3.min(dataFilter, function(d) { return new Date (d.Year) }) 
-    maxYear=d3.max(dataFilter, function(d) { return new Date (d.Year) }); 
+    minYear=d3.min(dataByCountry, function(d) { return new Date (d.Year) }) 
+    maxYear=d3.max(dataByCountry, function(d) { return new Date (d.Year) }); 
 
     var x = d3.scaleTime()
         .domain([minYear,maxYear])
@@ -54,8 +54,12 @@ async function init(){
       .call(xAxis);
 
     // Add Y axis
+    minValue=d3.min(dataByCountry, function(d) { return d.value }) 
+    maxValue=d3.max(dataByCountry, function(d) { return d.value }); 
+    // create the Y axis
+   
     var y = d3.scaleLinear()
-      .domain( [0,d3.max(dataFilter, function(d) { return new Date (d.Year) }) ])
+      .domain( [minValue,maxValue ])
       .range([ height, 0 ]);
     var yAxis= d3.axisLeft().scale(y);
     svg.append("g")
