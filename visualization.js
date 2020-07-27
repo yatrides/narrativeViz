@@ -15,7 +15,7 @@ async function init(){
               "translate(" + margin.left + "," + margin.top + ")");
 
     const data= await d3.csv("data/women_dataset.csv");
-    data=data.filter(function(d) { return d.Entity =='Mexico' }) 
+    const dataFiltered=data.filter(function(d) { return d.Entity =='Mexico' }) 
     console.log(data);  
     const country= "Mexico";
 
@@ -61,7 +61,7 @@ async function init(){
     var line = svg
       .append('g')
       .append("path")
-        .datum(data)
+        .datum(dataFiltered)
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
@@ -75,11 +75,11 @@ async function init(){
 
       // Create new data with the selection?
   
-      var dataFilter = data.map(function(d){return {Entity:d.Entity, Year: d.Year, value:d[selectedGroup]} })
+      var dataFilter = dataFiltered.map(function(d){return { Year: d.Year, value:d[selectedGroup]} })
 
       // Give these new data to update line
         line
-          .datum(data)
+          .datum(dataFiltered)
           .transition()
           .duration(1000)
           .attr("d", d3.line()
