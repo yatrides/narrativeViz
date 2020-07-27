@@ -59,7 +59,7 @@ async function init(){
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) { return x(+new Date(d.Year)) })
+          .x(function(d) { return x(+d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
         .attr("stroke", function(d) { return myColor() })
