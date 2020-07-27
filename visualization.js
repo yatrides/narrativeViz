@@ -48,6 +48,7 @@ async function init(){
 
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
+      .attr("class","myXaxis")
       .call(xAxis);
 
     // Add Y axis
@@ -55,6 +56,7 @@ async function init(){
       .domain( [0,80])
       .range([ height, 0 ]);
     svg.append("g")
+       .attr("class","myYaxis")
       .call(d3.axisLeft(y));
 
     // Initialize line with group a
