@@ -38,9 +38,11 @@ async function init(){
       .range(crange);
    
     // Add X axis --> it is a date format
+    minYear=d3.min(dataFilter, function(d) { return new Date (d.Year) }) 
+    maxYear=d3.max(dataFilter, function(d) { return new Date (d.Year) }); 
 
     var x = d3.scaleTime()
-        .domain([new Date("1990"),new Date("2017")])
+        .domain([minYear,maxYear])
         .range([ 0, width ])
 
     var xAxis = d3.axisBottom(x)
@@ -53,11 +55,12 @@ async function init(){
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0,80])
+      .domain( [0,d3.max(dataFilter, function(d) { return new Date (d.Year) }) ])
       .range([ height, 0 ]);
+    var yAxis= d3.axisLeft().scale(y);
     svg.append("g")
        .attr("class","myYaxis")
-      .call(d3.axisLeft(y));
+      .call(yAxis);
 
     // Initialize line with group a
     var line = svg
@@ -81,13 +84,17 @@ async function init(){
 
       // Create different axis with selection
       // Create the X axis:
-      x.domain([0, d3.max(dataFilter, function(d) { return new Date (d.Year) }) ]);
+      minYear=d3.min(dataFilter, function(d) { return new Date (d.Year) }) 
+      maxYear=d3.max(dataFilter, function(d) { return new Date (d.Year) }); 
+      x.domain([minYear,maxYear ]);
       svg.selectAll(".myXaxis").transition()
         .duration(3000)
         .call(xAxis);
 
+      minValue=d3.min(dataFilter, function(d) { return d.value }) 
+      maxValue=d3.max(dataFilter, function(d) { return d.value }); 
       // create the Y axis
-      y.domain([0, d3.max(dataFilter, function(d) { return d.value  }) ]);
+      y.domain([minValue, maxValue);
       svg.selectAll(".myYaxis")
         .transition()
         .duration(3000)
