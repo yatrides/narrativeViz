@@ -70,7 +70,7 @@ async function init(){
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
+      var dataFilter = data.map(function(d){return {Year: d.Year, value:d[selectedGroup]} })
 
       // Give these new data to update line
         line
