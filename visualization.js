@@ -39,7 +39,7 @@ async function init(){
         .domain([new Date("1950"),new Date("2000")])
         .range([ 0, width ])
 
-    var xAxis = d3.axisBottom(xScale)
+    var xAxis = d3.axisBottom(x)
       .tickFormat(d3.timeFormat("%Y"));
 
     svg.append("g")
