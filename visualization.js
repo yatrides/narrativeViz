@@ -5,6 +5,9 @@ async function init(){
     height = 400 - margin.top - margin.bottom;
     var crange = ['purple','pink','salmon'];
 
+    const data= await d3.csv("data/women_dataset.csv");
+    const dataByCountry=data.filter(function(d) { return d.Entity =='Mexico' }) 
+
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
       .append("svg")
