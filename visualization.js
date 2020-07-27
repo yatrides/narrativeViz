@@ -14,7 +14,7 @@ async function init(){
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
-    const data= await d3.csv("data/region-averages-of-the-composite-gender-equality-index.csv");
+    const data= await d3.csv("data/women_dataset.csv");
     console.log(data);  
     
     //list of groups 
