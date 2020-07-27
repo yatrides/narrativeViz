@@ -78,7 +78,7 @@ async function init(){
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(d.Year) })
+            .x(function(d) { return x(+d.Year) })
             .y(function(d) { return y(+d.value) })
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
