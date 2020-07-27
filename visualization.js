@@ -14,11 +14,9 @@ async function init(){
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
-    const data= await d3.csv("data/women_dataset.csv");
-    const dataByCountry=data.filter(function(d) { return d.Entity =='Mexico' }) 
-    console.log(dataByCountry);  
+    
 
-    //list of groups 
+    //list of groups
     var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
   
     
@@ -62,7 +60,7 @@ async function init(){
       .append("path")
         .datum(dataByCountry)
         .attr("d", d3.line()
-          .x(function(d) { return x(+d.Year) })
+          .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
         .attr("stroke", function(d) { return myColor() })
@@ -74,7 +72,7 @@ async function init(){
 
       // Create new data with the selection?
   
-      var dataFilter = dataByCountry.map(function(d){return { Year: d.Year, value:d[selectedGroup]} })
+      var dataFilter = dataByCountry.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
       // Give these new data to update line
         line
@@ -82,7 +80,7 @@ async function init(){
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(+d.Year) })
+            .x(function(d) { return x( new Date(d.Year)) })
             .y(function(d) { return y(+d.value) })
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
