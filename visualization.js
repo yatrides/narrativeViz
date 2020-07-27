@@ -48,7 +48,7 @@ async function init(){
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [50,80])
+      .domain( [0,80])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
