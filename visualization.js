@@ -73,6 +73,7 @@ async function init(){
       var dataFilter = data.map(function(d){return {time: new Date(d.Year), value:d[selectedGroup]} })
 
       // Give these new data to update line
+        line
           .datum(dataFilter)
           .transition()
           .duration(1000)
