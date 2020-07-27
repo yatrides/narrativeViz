@@ -77,6 +77,20 @@ async function init(){
   
       var dataFilter = dataByCountry.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
+      // Create different axis with selection
+      // Create the X axis:
+      x.domain([0, d3.max(dataFilter, function(d) { return new Date (d.Year) }) ]);
+      svg.selectAll(".myXaxis").transition()
+        .duration(3000)
+        .call(xAxis);
+
+      // create the Y axis
+      y.domain([0, d3.max(dataFilter, function(d) { return d.value  }) ]);
+      svg.selectAll(".myYaxis")
+        .transition()
+        .duration(3000)
+        .call(yAxis);
+
       // Give these new data to update line
         line
           .datum(dataFilter)
