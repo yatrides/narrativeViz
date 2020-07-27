@@ -70,7 +70,7 @@ async function init(){
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {time: new Date(d.Year), value:d[selectedGroup]} })
+      var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
 
       // Give these new data to update line
         line
@@ -78,7 +78,7 @@ async function init(){
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(+new Date(d.Year)) })
+            .x(function(d) { return x(d.Year) })
             .y(function(d) { return y(+d.value) })
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
