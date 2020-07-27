@@ -94,7 +94,7 @@ async function init(){
       minValue=d3.min(dataFilter, function(d) { return d.value }) 
       maxValue=d3.max(dataFilter, function(d) { return d.value }); 
       // create the Y axis
-      y.domain([minValue, maxValue);
+      y.domain([minValue, maxValue]);
       svg.selectAll(".myYaxis")
         .transition()
         .duration(3000)
