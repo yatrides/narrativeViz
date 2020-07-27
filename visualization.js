@@ -54,9 +54,9 @@ async function init(){
       .call(xAxis);
 
     // Add Y axis
-    const dataNotZero=dataByCountry.filter(function(d) { return d.value>0 }) 
-    minValue=d3.min(dataNotZero, function(d) { return d.value }) 
-    maxValue=d3.max(dataNotZero, function(d) { return d.value }); 
+    var dataNotZero=dataByCountry.filter(function(d) { return d.Proportion_of_Women_Labor_Force>0 }) 
+    minValue=d3.min(dataNotZero, function(d) { return d.Proportion_of_Women_Labor_Force}) 
+    maxValue=d3.max(dataNotZero, function(d) { return d.Proportion_of_Women_Labor_Force }); 
     // create the Y axis
    
     var y = d3.scaleLinear()
@@ -84,8 +84,8 @@ async function init(){
     function update(selectedGroup) {
 
       // Create new data with the selection?
-  
-      var dataFilter = dataNotZero.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
+      var dataNotZero2=dataByCountry.filter(function(d) { return d[selectedGroup]>0 }) 
+      var dataFilter = dataNotZero2.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
       // Create different axis with selection
       // Create the X axis:
