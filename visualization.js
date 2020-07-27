@@ -54,8 +54,9 @@ async function init(){
       .call(xAxis);
 
     // Add Y axis
-    minValue=d3.min(dataByCountry, function(d) { return d.value }) 
-    maxValue=d3.max(dataByCountry, function(d) { return d.value }); 
+    const dataNotZero=dataByCountry.filter(function(d) { return d.value>0 }) 
+    minValue=d3.min(dataNotZero, function(d) { return d.value }) 
+    maxValue=d3.max(dataNotZero, function(d) { return d.value }); 
     // create the Y axis
    
     var y = d3.scaleLinear()
@@ -70,7 +71,7 @@ async function init(){
     var line = svg
       .append('g')
       .append("path")
-        .datum(dataByCountry)
+        .datum(dataNotZero)
         .attr("d", d3.line()
           .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
@@ -84,7 +85,7 @@ async function init(){
 
       // Create new data with the selection?
   
-      var dataFilter = dataByCountry.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
+      var dataFilter = dataNotZero.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
       // Create different axis with selection
       // Create the X axis:
@@ -95,8 +96,8 @@ async function init(){
         .duration(3000)
         .call(xAxis);
 
-      minValue=d3.min(dataFilter, function(d) { return d.value }) 
-      maxValue=d3.max(dataFilter, function(d) { return d.value }); 
+        minValue=d3.min(dataFilter, function(d) { return d.value }) 
+        maxValue=d3.max(dataFilter, function(d) { return d.value }); 
       // create the Y axis
       y.domain([minValue, maxValue]);
       svg.selectAll(".myYaxis")
