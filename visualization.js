@@ -61,7 +61,7 @@ async function init(){
       .append('g')
       .append("path")
         .datum(data)
-        .filter(function(d) { return d.Entity ='Mexico' })
+        .filter(function(d) { return d.Entity =='Mexico' })
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
@@ -74,12 +74,12 @@ async function init(){
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {Year: d.Year, value:d[selectedGroup]} })
+      var dataFilter = data.map(function(d){return {Entity:d.Entity, Year: d.Year, value:d[selectedGroup]} })
 
       // Give these new data to update line
         line
           .datum(dataFilter)
-          .filter(function(d) { return d.Entity ='Mexico' })
+          .filter(function(d) { return d.Entity =='Mexico' })
           .transition()
           .duration(1000)
           .attr("d", d3.line()
