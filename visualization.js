@@ -15,9 +15,8 @@ async function init(){
               "translate(" + margin.left + "," + margin.top + ")");
 
     const data= await d3.csv("data/women_dataset.csv");
-    const dataFiltered=data.filter(function(d) { return d.Entity =='Mexico' }) 
-    console.log(data);  
-    const country= "Mexico";
+    const dataByCountry=data.filter(function(d) { return d.Entity =='Mexico' }) 
+    console.log(dataByCountry);  
 
     //list of groups 
     var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
@@ -40,7 +39,7 @@ async function init(){
     // Add X axis --> it is a date format
 
     var x = d3.scaleTime()
-        .domain([new Date("1950"),new Date("2000")])
+        .domain([new Date("1990"),new Date("2017")])
         .range([ 0, width ])
 
     var xAxis = d3.axisBottom(x)
@@ -61,7 +60,7 @@ async function init(){
     var line = svg
       .append('g')
       .append("path")
-        .datum(dataFiltered)
+        .datum(dataByCountry)
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
@@ -75,11 +74,11 @@ async function init(){
 
       // Create new data with the selection?
   
-      var dataFilter = dataFiltered.map(function(d){return { Year: d.Year, value:d[selectedGroup]} })
+      var dataFilter = dataByCountry.map(function(d){return { Year: d.Year, value:d[selectedGroup]} })
 
       // Give these new data to update line
         line
-          .datum(dataFiltered)
+          .datum(dataFilter)
           .transition()
           .duration(1000)
           .attr("d", d3.line()
