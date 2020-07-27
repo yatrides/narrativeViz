@@ -20,9 +20,7 @@ async function init(){
 
     //list of groups 
     var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
-    // Create new data for country
-    var dataByCountry = data.map(function(d){return {Entity: country,Year: d.Year, value:d[selectedGroup]} })
-
+  
     
     // add the options to the button
     d3.select("#groupButton")
@@ -62,7 +60,8 @@ async function init(){
     var line = svg
       .append('g')
       .append("path")
-        .datum(dataByCountry)
+        .datum(data)
+        .filter(function(d) { return d.Entity =='Mexico' })
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
@@ -80,6 +79,7 @@ async function init(){
       // Give these new data to update line
         line
           .datum(dataFilter)
+          .filter(function(d) { return d.Entity =='Mexico' })
           .transition()
           .duration(1000)
           .attr("d", d3.line()
