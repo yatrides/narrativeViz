@@ -23,8 +23,8 @@ async function init(){
      	.data(countryList)
       .enter()
     	.append('option')
-      .text(function (d) { return d; }) // text showed in the menu
-      .attr("value", function (d) { return d; }) // corresponding value returned by the button
+      .text(function (d) { return d.Entity; }) // text showed in the menu
+      .attr("value", function (d) { return d.Entity; }) // corresponding value returned by the button
               
     
 
