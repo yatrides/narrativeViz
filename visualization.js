@@ -19,6 +19,7 @@ async function init(){
               "translate(" + margin.left + "," + margin.top + ")");
     
      var svg = d3.select("#countryDrop")
+      .selectAll('myOptions')
      	.data(countryList)
       .enter()
     	.append('option')
