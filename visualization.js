@@ -17,16 +17,7 @@ async function init(){
       .append("g")
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
-    
-     var svg = d3.select("#countryDrop")
-      .selectAll('myOptions')
-     	.data(dataByCountry)
-      .enter()
-    	.append('option')
-      .text(function (d) { return d; }) // text showed in the menu
-      .attr("value", function (d) { return d; }) // corresponding value returned by the button
-              
-    
+
 
     //list of groups
     var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
