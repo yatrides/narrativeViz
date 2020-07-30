@@ -47,8 +47,8 @@ async function init(){
       .range(crange);
    
     // Add X axis --> it is a date format
-    minYear=d3.min(countryList, function(d) { return new Date (d.Year) }) 
-    maxYear=d3.max(countryList, function(d) { return new Date (d.Year) }); 
+    minYear=d3.min(dataByCountry, function(d) { return new Date (d.Year) }) 
+    maxYear=d3.max(dataByCountry, function(d) { return new Date (d.Year) }); 
 
     var x = d3.scaleTime()
         .domain([minYear,maxYear])
@@ -63,7 +63,7 @@ async function init(){
       .call(xAxis);
 
     // Add Y axis
-    var dataNotZero=countryList.filter(function(d) { return d.Proportion_of_Women_Labor_Force>0 }) 
+    var dataNotZero=dataByCountry.filter(function(d) { return d.Proportion_of_Women_Labor_Force>0 }) 
     minValue=d3.min(dataNotZero, function(d) { return d.Proportion_of_Women_Labor_Force}) 
     maxValue=d3.max(dataNotZero, function(d) { return d.Proportion_of_Women_Labor_Force }); 
     // create the Y axis
@@ -133,12 +133,4 @@ async function init(){
         // run the updateChart function with this selected option
         update(selectedOption)
     })
-
-    // When the button is changed, run the updateChart function
-    d3.select("#countryDrop").on("change", function(d) {
-      // recover the option that has been chosen
-      var selectedOption = d3.select(this).property("value")
-      // run the updateChart function with this selected option
-      update(selectedOption)
-  })
 }
