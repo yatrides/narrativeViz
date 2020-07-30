@@ -82,13 +82,12 @@ async function init(){
     var line = svg
       .append('g')
       .append("path")
-        .datum(top5Labor)
-        .attr("d", d3.line()
+        .data(top5Labor)
+        .attr("d", d=> d3.line()
           .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
         .attr("stroke", function(d) { return myColor() })
-        .attr("d", d => line(d.Proportion_of_Women_Labor_Force))
         .style("stroke-width", 4)
         .style("fill", "none")
 
