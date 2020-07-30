@@ -3,7 +3,7 @@ async function init(){
     var margin = {top: 10, right: 100, bottom: 30, left: 30},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
-    var crange = ['purple','pink','salmon'];
+    var crange = ['purple','pink','salmon','magenta','plum'];
 
     const data= await d3.csv("data/women_dataset.csv");
     const sortLabor=data.sort(function(a,b) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
@@ -87,7 +87,6 @@ async function init(){
           .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
-        .attr("stroke", d => z(d.Entity))
         .attr("stroke", function(d) { return myColor() })
         .attr("d", d => line(d.Proportion_of_Women_Labor_Force))
         .style("stroke-width", 4)
