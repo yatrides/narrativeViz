@@ -83,9 +83,9 @@ async function init(){
       .append('g')
       .append("path")
         .data(top5Labor)
-        .attr("d", d=> d3.line(d.Proportion_of_Women_Labor_Force)
-          //.x(function(d) { return x( new Date(d.Year)) })
-          //.y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
+        .attr("d", d=> d3.line(
+          .x(function(d) { return x( new Date(d.Year)) })
+          .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
         .attr("stroke", function(d) { return myColor() })
         .style("stroke-width", 4)
