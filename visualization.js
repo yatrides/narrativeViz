@@ -7,7 +7,7 @@ async function init(){
 
     const data= await d3.csv("data/women_dataset.csv");
     const dataByCountry=data.filter(function(d) { return d.Entity =='Mexico' }) 
-    const countryList=  d3.map(data, function(d){return(d.Entity)}).keys()
+   // const countryList=  d3.map(data, function(d){return(d.Entity)}).keys()
 
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
@@ -20,7 +20,7 @@ async function init(){
     
      var svg = d3.select("#countryDrop")
       .selectAll('myOptions')
-     	.data(countryList)
+     	.data(dataByCountry)
       .enter()
     	.append('option')
       .text(function (d) { return d; }) // text showed in the menu
