@@ -6,8 +6,18 @@ async function init(){
     var crange = ['purple','pink','salmon'];
 
     const data= await d3.csv("data/women_dataset.csv");
-    const dataByCountry=data.filter(function(d) { return d.Entity =='Mexico' }) 
-   // const countryList=  d3.map(data, function(d){return(d.Entity)}).keys()
+    const sortLabor=data.sort(function(a,b) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
+    const sortHrs=data.sort(function(a,b) { return +a.Avg_Weekly_Hours_Worked_by_Woman - +b.Avg_Weekly_Hours_Worked_by_Woman })
+    const sortBen=data.sort(function(a,b) { return +a.Public_Spending_on_Family_Benefits - +b.Public_Spending_on_Family_Benefits })
+    
+    const top5Labor=sortLabor.filter(function(d,i){ return i<5 })
+    const top5Hrs=sortHrs.filter(function(d,i){ return i<5 })
+    const top5Ben=sortBen.filter(function(d,i){ return i<5 })
+
+   
+    // const countryList=  d3.map(data, function(d){return(d.Entity)}).keys()
+   //var dataNotZero=dataByCountry.filter(function(d) { return d.Proportion_of_Women_Labor_Force>0 })   
+   //var dataByCountry = dataNotZero.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
@@ -38,8 +48,8 @@ async function init(){
       .range(crange);
    
     // Add X axis --> it is a date format
-    minYear=d3.min(dataByCountry, function(d) { return new Date (d.Year) }) 
-    maxYear=d3.max(dataByCountry, function(d) { return new Date (d.Year) }); 
+    minYear=d3.min(top5Labor, function(d) { return new Date (d.Year) }) 
+    maxYear=d3.max(top5Labor, function(d) { return new Date (d.Year) }); 
 
     var x = d3.scaleTime()
         .domain([minYear,maxYear])
@@ -54,9 +64,10 @@ async function init(){
       .call(xAxis);
 
     // Add Y axis
-    var dataNotZero=dataByCountry.filter(function(d) { return d.Proportion_of_Women_Labor_Force>0 }) 
-    minValue=d3.min(dataNotZero, function(d) { return d.Proportion_of_Women_Labor_Force}) 
-    maxValue=d3.max(dataNotZero, function(d) { return d.Proportion_of_Women_Labor_Force }); 
+   
+
+    minValue=d3.min(top5Labor, function(d) { return d.Proportion_of_Women_Labor_Force}) 
+    maxValue=d3.max(top5Labor, function(d) { return d.Proportion_of_Women_Labor_Force }); 
     // create the Y axis
    
     var y = d3.scaleLinear()
@@ -71,12 +82,14 @@ async function init(){
     var line = svg
       .append('g')
       .append("path")
-        .datum(dataNotZero)
+        .datum(top5Labor)
         .attr("d", d3.line()
           .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
         )
+        .attr("stroke", d => z(d.Entity))
         .attr("stroke", function(d) { return myColor() })
+        .attr("d", d => line(d.Proportion_of_Women_Labor_Force))
         .style("stroke-width", 4)
         .style("fill", "none")
 
@@ -105,6 +118,7 @@ async function init(){
         .duration(3000)
         .call(yAxis);
 
+        
       // Give these new data to update line
         line
           .datum(dataFilter)
