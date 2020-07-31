@@ -82,13 +82,14 @@ async function init(){
     // Initialize line with group a
     var line = svg
       .append('g')
+      .data(top5Labor)
+      .enter()
       .append("path")
-        .data(top5Labor)
-        .enter()
-        .attr("d", d=> {d3.line(
+        //.attr("d", d=> d3.line(
+          .attr("d", d3.line()
           .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
-        })
+        )
         .attr("stroke", function(d) { return myColor() })
         .style("stroke-width", 4)
         .style("fill", "none")
