@@ -130,8 +130,6 @@ async function init(){
         .duration(3000)
         .call(yAxis);
 
-      
-
           var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
           .key(function(d) { return d.Entity;})
           .entries(allDataByTop5);
@@ -145,9 +143,9 @@ async function init(){
           svg.selectAll(".line")
             .append('g')
             .data(groupByEntity)
+            .enter()
             .transition()
             .duration(1000)
-            .enter()
             .append("path")
               .attr("fill", "none")
               .attr("stroke", function(d){ return scaleColorCountry(d.key) })
