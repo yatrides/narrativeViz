@@ -131,26 +131,26 @@ async function init(){
         .duration(3000)
         .call(yAxis);
 
-          var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
-          .key(function(d) { return d.Entity;})
-          .entries(dataFilter);
+        var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
+        .key(function(d) { return d.Entity;})
+        .entries(allDataByTop5);
     
-          var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
-          var scaleColorCountry = d3.scaleOrdinal()
-              .domain(colorByCountry)
-              .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
-    
-          svg.selectAll("path")
-            .data(groupByEntity)
-            .transition()
-            .duration(1000)
-            .attr("stroke", function(d){ return scaleColorCountry(d.key) })     
-            .attr("stroke-width", 4)  
-            .attr("d", function(d){
-              return d3.line()
-                .x(function(d) { return x( new Date(d.Year)) })
-                .y(function(d) { return y(+d.value) })
-                (d.values)
+        var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
+        var scaleColorCountry = d3.scaleOrdinal()
+            .domain(colorByCountry)
+            .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
+  
+        svg.selectAll("path")
+          .data(groupByEntity)
+          .transition()
+          .duration(1000)
+          .attr("stroke", function(d){ return scaleColorCountry(d.key) })     
+          .attr("stroke-width", 4)  
+          .attr("d", function(d){
+            return d3.line()
+              .x(function(d) { return x( new Date(d.Year)) })
+              .y(function(d) { return y(+d.selectedGroup) })
+              (d.values)
       })
     }
 
