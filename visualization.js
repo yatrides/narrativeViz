@@ -142,6 +142,7 @@ async function init(){
   
         svg.selectAll(".line")
           .data(groupByEntity)
+        svg.selectAll("path")
           .transition()
           .duration(1000)
           .attr("fill", "none")
