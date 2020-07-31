@@ -133,7 +133,7 @@ async function init(){
 
           var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
           .key(function(d) { return d.Entity;})
-          .entries(allDataByTop5);
+          .entries(dataFilter);
     
           var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
           var scaleColorCountry = d3.scaleOrdinal()
