@@ -78,19 +78,19 @@ async function init(){
       .call(yAxis);
 
     // Initialize line with group a
-    var line = svg
-      .append('g')
-      .data(allDataByTop5)
-      .enter()
-      .append("path")
-        //.attr("d", d=> d3.line(
-          .attr("d", d3.line()
-          .x(function(d) { return x( new Date(d.Year)) })
+    var line =  svg
+    .append('g')
+    .datum(allDataByTop5)
+    .append("path")
+      .attr("d", function(d){
+        return d3.line()
+          .x(function(d) { return new Date(d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
-        )
-        .attr("stroke", function(d) { return myColor() })
-        .style("stroke-width", 4)
-        .style("fill", "none")
+          (d.values)
+      })
+      .attr("stroke", function(d) { return myColor() })
+      .style("stroke-width", 4)
+      .style("fill", "none")
 
     // A function that update the chart
     function update(selectedGroup) {
