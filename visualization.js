@@ -47,8 +47,8 @@ async function init(){
       .range(crange);
    
     // Add X axis --> it is a date format
-    minYear=d3.min(top5Labor, function(d) { return new Date (d.Year) }) 
-    maxYear=d3.max(top5Labor, function(d) { return new Date (d.Year) }); 
+    minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
+    maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
 
     var x = d3.scaleTime()
         .domain([minYear,maxYear])
