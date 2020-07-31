@@ -17,12 +17,7 @@ async function init(){
     const top5Labor=sortLabor.filter(function(d,i){ return i>20 })
     const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
     const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
- 
-   
-    // const countryList=  d3.map(data, function(d){return(d.Entity)}).keys()
-   //var dataNotZero=dataByCountry.filter(function(d) { return d.Proportion_of_Women_Labor_Force>0 })   
-   //var dataByCountry = dataNotZero.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
-
+    
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
       .append("svg")
@@ -101,8 +96,7 @@ async function init(){
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataNotZero2=dataByCountry.filter(function(d) { return d[selectedGroup]>0 }) 
-      var dataFilter = dataNotZero2.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
+      var dataFilter = allDataByTop5.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
       // Create different axis with selection
       // Create the X axis:
