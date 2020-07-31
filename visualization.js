@@ -116,8 +116,8 @@ async function init(){
         .append("line")
             .attr("x1", margin)
             .attr("y1", function(d,i){ return i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-            .attr("x2", 20)
-            .attr("y2", 0)
+            .attr("x2", "20")
+            .attr("y2", "0")
             .style("fill", function(d){ return color(d) });
         // Add one dot in the legend for each name.
         d3.select("#legends")
