@@ -100,7 +100,7 @@ async function init(){
       .attr("stroke-width", 4)
       .attr("d", function(d){
         return d3.line()
-          .x(function(d) { return new Date(d.Year) })
+          .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
           (d.values)
       })
