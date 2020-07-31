@@ -17,7 +17,7 @@ async function init(){
     const top5Labor=sortLabor.filter(function(d,i){ return i>20 })
     const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
     const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
-    
+
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
       .append("svg")
@@ -65,8 +65,8 @@ async function init(){
     // Add Y axis
    
 
-    minValue=d3.min(top5Labor, function(d) { return d.Proportion_of_Women_Labor_Force}) 
-    maxValue=d3.max(top5Labor, function(d) { return d.Proportion_of_Women_Labor_Force }); 
+    minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force}) 
+    maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
     // create the Y axis
    
     var y = d3.scaleLinear()
@@ -119,7 +119,7 @@ async function init(){
         
       // Give these new data to update line
         line
-          .datum(dataFilter)
+          .datum(allDataByTop5)
           .transition()
           .duration(1000)
           .attr("d", d3.line()
