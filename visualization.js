@@ -140,20 +140,17 @@ async function init(){
               .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
     
 
-         line
+          svg.selectAll("path")
             .append('g')
-            .datum(groupByEntity)
+            .data(groupByEntity)
             .transition()
             .duration(1000)
-            .append("path")
-              .attr("fill", "none")
-              .attr("stroke", function(d){ return scaleColorCountry(d.key) })
-              .attr("stroke-width", 4)
-              .attr("d", function(d){
-                return d3.line()
-                  .x(function(d) { return x( new Date(d.Year)) })
-                  .y(function(d) { return y(+d[selectedGroup]) })
-                  (d.values)
+            .attr("stroke", function(d){ return scaleColorCountry(d.key) })       
+            .attr("d", function(d){
+              return d3.line()
+                .x(function(d) { return x( new Date(d.Year)) })
+                .y(function(d) { return y(+d[selectedGroup]) })
+                (d.values)
       })
     }
 
