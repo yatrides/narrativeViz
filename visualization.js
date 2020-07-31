@@ -149,7 +149,7 @@ async function init(){
           .attr("d", function(d){
             return d3.line()
               .x(function(d) { return x( new Date(d.Year)) })
-              .y(function(d) { return y(+d.selectedGroup) })
+              .y(function(d) { return y(+d[selectedGroup]) })
               (d.values)
       })
     }
