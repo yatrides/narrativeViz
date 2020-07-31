@@ -86,7 +86,7 @@ async function init(){
       var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
       var scaleColorCountry = d3.scaleOrdinal()
           .domain(colorByCountry)
-          .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
+          .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
 
 
     // Initialize line with group a
