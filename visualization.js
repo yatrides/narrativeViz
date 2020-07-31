@@ -46,6 +46,8 @@ async function init(){
       .domain(allGroup)
       .range(crange);
    
+  
+
     // Add X axis --> it is a date format
     minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
     maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
@@ -81,20 +83,28 @@ async function init(){
       .key(function(d) { return d.Entity;})
       .entries(allDataByTop5);
 
+      var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
+      var scaleColorCountry = d3.scaleOrdinal()
+          .domain(colorByCountry)
+          .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
+
+
     // Initialize line with group a
     var line =  svg
     .append('g')
-    .datum(groupByEntity)
+    .data(groupByEntity)
+    .enter()
     .append("path")
+      .attr("fill", "none")
+      .attr("stroke", function(d){ return scaleColorCountry(d.key) })
+      .attr("stroke-width", 4)
       .attr("d", function(d){
         return d3.line()
           .x(function(d) { return new Date(d.Year) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
           (d.values)
       })
-      .attr("stroke", function(d) { return myColor() })
-      .style("stroke-width", 4)
-      .style("fill", "none")
+      
 
     // A function that update the chart
     function update(selectedGroup) {
