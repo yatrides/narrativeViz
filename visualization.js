@@ -77,10 +77,14 @@ async function init(){
        .attr("class","myYaxis")
       .call(yAxis);
 
+      var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
+      .key(function(d) { return d.Entity;})
+      .entries(allDataByTop5);
+
     // Initialize line with group a
     var line =  svg
     .append('g')
-    .datum(allDataByTop5)
+    .datum(groupByEntity)
     .append("path")
       .attr("d", function(d){
         return d3.line()
