@@ -141,7 +141,6 @@ async function init(){
     
 
           svg.selectAll("path")
-            .append('g')
             .data(groupByEntity)
             .transition()
             .duration(1000)
