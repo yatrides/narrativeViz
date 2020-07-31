@@ -92,8 +92,7 @@ async function init(){
     // Initialize line with group a
     var line =  svg
     .append('g')
-    .data(groupByEntity)
-    .enter()
+    .datum(groupByEntity)
     .append("path")
       .attr("fill", "none")
       .attr("stroke", function(d){ return scaleColorCountry(d.key) })
