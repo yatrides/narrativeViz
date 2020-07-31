@@ -6,9 +6,10 @@ async function init(){
     var crange = ['purple','pink','salmon','magenta','plum'];
 
     const data= await d3.csv("data/women_dataset.csv");
-    const sortLabor=data.sort(function(a,b) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
-    const sortHrs=data.sort(function(a,b) { return +a.Avg_Weekly_Hours_Worked_by_Woman - +b.Avg_Weekly_Hours_Worked_by_Woman })
-    const sortBen=data.sort(function(a,b) { return +a.Public_Spending_on_Family_Benefits - +b.Public_Spending_on_Family_Benefits })
+    const data2017=data.filter(function(d){ return d.Year=="1997"})
+    const sortLabor=data2017.sort(function(a,b) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
+    const sortHrs=data2017.sort(function(a,b) { return +a.Avg_Weekly_Hours_Worked_by_Woman - +b.Avg_Weekly_Hours_Worked_by_Woman })
+    const sortBen=data2017.sort(function(a,b) { return +a.Public_Spending_on_Family_Benefits - +b.Public_Spending_on_Family_Benefits })
     
     const top5Labor=sortLabor.filter(function(d,i){ return i<5 })
     const top5Hrs=sortHrs.filter(function(d,i){ return i<5 })
@@ -83,10 +84,10 @@ async function init(){
       .append('g')
       .append("path")
         .data(top5Labor)
-        .attr("d", d=> d3.line(
+        .attr("d", d=> {d3.line(
           .x(function(d) { return x( new Date(d.Year)) })
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
-        )
+        })
         .attr("stroke", function(d) { return myColor() })
         .style("stroke-width", 4)
         .style("fill", "none")
