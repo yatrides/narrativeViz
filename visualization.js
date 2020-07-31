@@ -140,7 +140,6 @@ async function init(){
               .domain(colorByCountry)
               .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
     
-          svg.exit().remove();
           svg.selectAll("path")
             .data(groupByEntity)
             .transition()
