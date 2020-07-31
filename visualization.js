@@ -144,6 +144,7 @@ async function init(){
           .data(groupByEntity)
           .transition()
           .duration(1000)
+          .attr("fill", "none")
           .attr("stroke", function(d){ return scaleColorCountry(d.key) })     
           .attr("stroke-width", 4)  
           .attr("d", function(d){
