@@ -104,6 +104,35 @@ async function init(){
           .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
           (d.values)
       })
+
+        // Add one line in the legend for each name.
+        var margin_leg=50;
+        d3.select("#legends")
+        .append('g')
+        .attr("transform", "translate(" + margin_leg + ", " +margin_leg + ")")
+        .selectAll("legends")
+        .data(countryList)
+        .enter()
+        .append("line")
+            .attr("x1", margin)
+            .attr("y1", function(d,i){ return i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("x2", 20)
+            .attr("y2", 0)
+            .style("fill", function(d){ return color(d) });
+        // Add one dot in the legend for each name.
+        d3.select("#legends")
+        .append('g')
+        .attr("transform", "translate(" + margin_leg + ", " +margin_leg + ")")
+        .selectAll("leyendtext")
+        .data(countryList)
+        .enter()
+        .append("text")
+            .attr("x", margin + 10)
+            .attr("y", function(d,i){ return i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .style("fill", function(d){ return color(d)})
+            .text(function(d){ return d})
+            .attr("text-anchor", "left")
+            .style("alignment-baseline", "middle")
       
 
     // A function that update the chart
