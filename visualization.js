@@ -90,7 +90,7 @@ async function init(){
 
 
     // Initialize line with group a
-    svg.selectAll(".line")
+    var line = svg.selectAll(".line")
     .append('g')
     .data(groupByEntity)
     .enter()
@@ -140,10 +140,9 @@ async function init(){
               .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
     
 
-          svg.selectAll(".line")
+         line
             .append('g')
-            .data(groupByEntity)
-            .enter()
+            .datum(groupByEntity)
             .transition()
             .duration(1000)
             .append("path")
