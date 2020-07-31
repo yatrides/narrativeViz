@@ -125,6 +125,7 @@ async function init(){
         maxValue=d3.max(dataFilter, function(d) { return d.value }); 
       // create the Y axis
       y.domain([minValue, maxValue]);
+
       svg.selectAll(".myYaxis")
         .transition()
         .duration(3000)
@@ -139,12 +140,13 @@ async function init(){
               .domain(colorByCountry)
               .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
     
-
+          svg.exit().remove();
           svg.selectAll("path")
             .data(groupByEntity)
             .transition()
             .duration(1000)
-            .attr("stroke", function(d){ return scaleColorCountry(d.key) })       
+            .attr("stroke", function(d){ return scaleColorCountry(d.key) })     
+            .attr("stroke-width", 4)  
             .attr("d", function(d){
               return d3.line()
                 .x(function(d) { return x( new Date(d.Year)) })
