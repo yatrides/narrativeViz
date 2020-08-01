@@ -6,13 +6,13 @@
 <title>Gender equality index</title>
 <style>
 #headerDiv {
-  background-image:linear-gradient(rgb(255, 182, 255),lightpink,white);
+  background-image:linear-gradient(#ee6f73,lightpink);
   text-align: center;
   height: 80px;
   width: auto;
 }
 h1{
-  color:indigo;
+  color:white;
 }
 body{
  color:indigo;
@@ -23,16 +23,45 @@ body{
  font: 18px Arial, sans-serif;
  text-align: center;
 }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightpink;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #ef7c7f;
+}
 </style>
 </head>
 <body onload='init()'>
   
 <div id="headerDiv">
-  <h1>Female labor force across time</h1>
+  <h1>Participation of women on labor force</h1>
 </div>
 <div id="dropdowns">
- <label>Female participation at work:</label>
- <select id="groupButton"></select>
+<ul>
+  <li><a class="active" href="tryit.asp-filename=trycss_navbar_horizontal_black.html#home">Home</a></li>
+  <li><a href="tryit.asp-filename=trycss_navbar_horizontal_black.html#news">News</a></li>
+  <li><a href="tryit.asp-filename=trycss_navbar_horizontal_black.html#contact">Contact</a></li>
+  <li><a href="tryit.asp-filename=trycss_navbar_horizontal_black.html#about">About</a></li>
+</ul>
+ <label>Proportion of women on the labor force has increased at different rates per countries: </label>
+ <button id="groupButton"></button>
 </div>
 <p></p>
 <p></p>
