@@ -105,6 +105,15 @@ async function init(){
           (d.values)
       })
 
+      line
+      .select(".label")
+      .transition()
+      .duration(750)
+      .attr("transform", function(d) {
+        var last = d.values[0];
+        return "translate(" + xScale(last.Year) + "," + yScale(last.Proportion_of_Women_Labor_Force) + ")";
+      })
+
         // Add one line in the legend for each name.
         var margin_leg=50;
         d3.select("#legends")
