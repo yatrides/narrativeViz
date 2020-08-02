@@ -22,9 +22,9 @@ async function init(orderType){
    d.Avg_Weekly_Hours_Worked_by_Woman=+d.Avg_Weekly_Hours_Worked_by_Woman;
    d.Public_Spending_on_Family_Benefits=+d.Public_Spending_on_Family_Benefits;
 });
- const data2013=data.filter(function(d){ return d.Year=="2013"})
- const dataNotZero=data2013.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
- const sortLabor=dataNotZero.sort(function(b,a) { return +a.Avg_Weekly_Hours_Worked_by_Woman - +b.Avg_Weekly_Hours_Worked_by_Woman })
+ const dataNotZero=data.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
+ const data2013=dataNotZero.filter(function(d){ return d.Year=="2013"})
+ const sortLabor=data2013.sort(function(b,a) { return +a.Avg_Weekly_Hours_Worked_by_Woman - +b.Avg_Weekly_Hours_Worked_by_Woman })
  
 
  // append the svg object to the body of the page
@@ -118,7 +118,7 @@ async function init(orderType){
  function update() {
    const top5Labor=getTop5(orderType,sortLabor)
    const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
-   const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
+   const allDataByTop5= dataNotZero.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
 
 
    // Create new data with the selection?
@@ -126,10 +126,10 @@ async function init(orderType){
 
    // Create different axis with selection
    // Create the X axis:
-   //minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
-   //maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
-   minYear=new Date ('2006')
-   maxYear=new Date ('2016')
+   minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
+   maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
+   //minYear=new Date ('2006')
+   //maxYear=new Date ('2016')
    x.domain([minYear,maxYear ]);
    svg.selectAll(".myXaxis")
     .transition()
@@ -141,10 +141,10 @@ async function init(orderType){
       )
     );
 
-  //minValue=d3.min(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }) 
-  //maxValue=d3.max(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }); 
-  minValue=25
-  maxValue=45
+  minValue=d3.min(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }) 
+  maxValue=d3.max(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }); 
+  //minValue=25
+  //maxValue=45
    // create the Y axis
    y.domain([minValue, maxValue]);
 
