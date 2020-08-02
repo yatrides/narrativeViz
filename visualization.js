@@ -1,9 +1,19 @@
-async function init(){
+async function init(orderType){
  // set the dimensions and margins of the graph
  var margin = {top: 10, right: 100, bottom: 30, left: 30},
  width = 800 - margin.left - margin.right,
  height = 500 - margin.top - margin.bottom;
  var crange = ['purple','pink','salmon','magenta','plum'];
+
+function getTop5(orderType,ds){
+  if(orderType){
+    return ds.slice(0, 10);
+  }
+  else{
+    return ds.slice(data.length-10, data.length);
+  }
+}
+
 
  const data= await d3.csv("data/women_dataset.csv");
  data.forEach(d=>{
@@ -11,11 +21,10 @@ async function init(){
    d.Avg_Weekly_Hours_Worked_by_Woman=+d.Avg_Weekly_Hours_Worked_by_Woman;
    d.Public_Spending_on_Family_Benefits=+d.Public_Spending_on_Family_Benefits;
 });
- var top5=20;
  const data2013=data.filter(function(d){ return d.Year=="2013"})
  const dataNotZero=data2013.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
- const sortLabor=dataNotZero.sort(function(a,b) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
- const top5Labor=sortLabor.filter(function(d,i){ return i>top5 })
+ const sortLabor=dataNotZero.sort(function(b,a) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
+ const top5Labor=getTop5(orderType,sortLabor)
  const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
  const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
 
@@ -146,12 +155,12 @@ var line = d3.line()
                (d.values)
            })
 
-      var totalLength = d3.select(".pline").node().getTotalLength();
+    var totalLength = d3.select(".pline").node().getTotalLength();
       d3.selectAll(".pline")
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
-        .duration(4000)
+        .duration(6000)
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0)
         
