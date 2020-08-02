@@ -128,8 +128,8 @@ async function init(orderType){
    // Create the X axis:
    //minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
    //maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
-   minYear=new Date (2000)
-   maxYear=new Date (2013)
+   minYear=new Date ('2000')
+   maxYear=new Date ('2013')
    x.domain([minYear,maxYear ]);
    svg.selectAll(".myXaxis")
     .transition()
