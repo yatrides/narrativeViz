@@ -38,7 +38,7 @@ async function init(orderType){
   */
  var svg = d3.select("#lineChart");
  var group=svg.select("g")
- group.exit().remove();
+ group.remove();
 
  var svg = d3.select("#lineChart")
  //.append("svg")
