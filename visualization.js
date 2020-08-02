@@ -180,14 +180,14 @@ async function init(orderType){
 
            })
 
-    var totalLength = d3.select(".pline").node().getTotalLength();
-    console.log("totalLength:" + totalLength)
-      d3.selectAll(".pline")
+    //var totalLength = d3.select(".pline").node().getTotalLength();
+    //console.log("totalLength:" + totalLength)
+     // d3.selectAll(".pline")
       //.attr("stroke-dasharray", totalLength + " " + totalLength)
       //.attr("stroke-dashoffset", totalLength)
-      .transition()
+      //.transition()
         //.delay(function(d, i) { return i * 1000; })
-        .duration(10000)
+       // .duration(10000)
        // .ease(d3.easeLinear)
        // .attr("stroke-dashoffset", 0)
         
