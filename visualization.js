@@ -39,6 +39,10 @@ async function init(orderType){
            "translate(" + margin.left + "," + margin.top + ")");
   */
 
+ var svg = d3.select("#chart")
+ .append("svg")
+   .attr("width", width + margin.left + margin.right)
+   .attr("height", height + margin.top + margin.bottom)
 
  //list of groups
  var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
@@ -106,11 +110,6 @@ var line = d3.line()
 
  // A function that update the chart
  function update() {
-
-  var svg = d3.select("#chart")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
   
     svg.append("g")
     .attr("transform",
