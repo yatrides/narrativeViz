@@ -73,7 +73,7 @@ async function init(orderType){
  //  .tickFormat(d3.timeFormat("%Y"));
 
  var xAxis = svg.append("g")
-   .attr("transform", "translate(0," + height + ")")
+   .attr("transform", "translate("+margin.left+"," + height + ")")
    .attr("class","myXaxis")
    //.call(xAxis);
 
@@ -87,7 +87,7 @@ async function init(orderType){
    .range([ height, 0 ]);
 
  var yAxis= svg.append("g")
-    .attr("transform", "translate(0," + margin.left + ")")
+    .attr("transform", "translate("+margin.left+", 0)")
     .attr("class","myYaxis")
     //d3.axisLeft().scale(y);
     //.call(yAxis);
