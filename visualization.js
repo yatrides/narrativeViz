@@ -1,9 +1,9 @@
 function getTop5(orderType,ds){
   if(orderType){
-    return ds.slice(0, 10);
+    return ds.slice(0, 5);
   }
   else{
-    return ds.slice(ds.length-10, ds.length);
+    return ds.slice(ds.length-5, ds.length);
   }
 }
 
@@ -57,38 +57,37 @@ async function init(orderType){
    .range(crange);
 
 
-
  // Add X axis --> it is a date format
- minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
- maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
+ //minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
+ //maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
 
  var x = d3.scaleTime()
-     .domain([minYear,maxYear])
+     //.domain([minYear,maxYear])
      .range([ 0, width ])
 
- var xAxis = d3.axisBottom(x)
-   .tickFormat(d3.timeFormat("%Y"));
+ //var xAxis = d3.axisBottom(x)
+ //  .tickFormat(d3.timeFormat("%Y"));
 
- svg.append("g")
+ var xAxis = svg.append("g")
    .attr("transform", "translate(0," + height + ")")
    .attr("class","myXaxis")
-   .call(xAxis);
+   //.call(xAxis);
 
  // Add Y axis
-
-
- minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force}) 
- maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
+ //minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force}) 
+ //maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
  // create the Y axis
 
  var y = d3.scaleLinear()
-   .domain( [minValue,maxValue ])
+  //.domain( [minValue,maxValue ])
    .range([ height, 0 ]);
- var yAxis= d3.axisLeft().scale(y);
- svg.append("g")
-    .attr("class","myYaxis")
-   .call(yAxis);
 
+ var yAxis= svg.append("g")
+    .attr("class","myYaxis")
+    //d3.axisLeft().scale(y);
+    //.call(yAxis);
+
+  /*
    var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
    .key(function(d) { return d.Entity;})
    .entries(allDataByTop5);
@@ -97,6 +96,7 @@ async function init(orderType){
    var scaleColorCountry = d3.scaleOrdinal()
        .domain(colorByCountry)
        .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
+  */
 
 var line = d3.line()
  
@@ -113,19 +113,25 @@ var line = d3.line()
    minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
    maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
    x.domain([minYear,maxYear ]);
-   svg.selectAll(".myXaxis").transition()
-     .duration(3000)
-     .call(xAxis);
+   svg.selectAll(".myXaxis")
+    .transition()
+    .duration(3000)
+    .call(d3.axisBottom()
+      .scale(x)
+      .tickFormat(
+        d3.timeFormat("%Y")
+      )
+    );
 
-     minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }) 
-     maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
+  minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }) 
+  maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
    // create the Y axis
    y.domain([minValue, maxValue]);
 
    svg.selectAll(".myYaxis")
      .transition()
      .duration(3000)
-     .call(yAxis);
+     .call(d3.axisLeft().scale(y));
 
      var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
      .key(function(d) { return d.Entity;})
