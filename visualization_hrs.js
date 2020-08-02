@@ -119,7 +119,6 @@ async function init(orderType){
    const top5Labor=getTop5(orderType,sortLabor)
    const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
    const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
-   console.log("YA ENTRE")
 
 
    // Create new data with the selection?
