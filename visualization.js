@@ -87,6 +87,7 @@ async function init(orderType){
    .range([ height, 0 ]);
 
  var yAxis= svg.append("g")
+    .attr("transform", "translate(0," + margin.left + ")")
     .attr("class","myYaxis")
     //d3.axisLeft().scale(y);
     //.call(yAxis);
@@ -102,9 +103,7 @@ async function init(orderType){
        .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
   */
 
-var line = d3.line()
- 
-     
+
 
  // A function that update the chart
  function update() {
@@ -138,8 +137,6 @@ var line = d3.line()
   maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
    // create the Y axis
    y.domain([minValue, maxValue]);
-   console.log(minValue)
-   console.log(maxValue)
 
    svg.selectAll(".myYaxis")
      .transition()
