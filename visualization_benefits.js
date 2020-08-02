@@ -145,7 +145,7 @@ async function init(orderType){
     .append("text")
     //.attr("transform", "rotate(-90)")
     .attr("y", 4) 
-    .attr("x", margin + width - 20)
+    .attr("x", width - 20)
     //.style("text-anchor", "end")
     .style("fill","black")
     .text("Year");
@@ -170,7 +170,7 @@ async function init(orderType){
      .attr("x", -15)
      //.style("text-anchor", "end")
      .style("fill","black")
-     .text("Public spending on Family Benefits %");
+     .text("% Public spending on Family Benefits");
 
      var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
      .key(function(d) { return d.Entity;})
@@ -241,7 +241,7 @@ async function init(orderType){
             var last =  d.values[d.values.length-1];
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Public_Spending_on_Family_Benefits) + ")";
           })
-
+        }
          
  update()
 }
