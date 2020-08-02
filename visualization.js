@@ -184,4 +184,5 @@ country.select(".label")
      return "translate(" + x(new Date (last.Year)) + "," + y(last.d[selectedGroup]) + ")";
    })
  }
+ update()
 }
