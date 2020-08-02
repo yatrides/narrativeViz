@@ -38,6 +38,7 @@ async function init(orderType){
   */
 
  var svg = d3.select("#lineChart")
+    svg.exit()
  //.append("svg")
    .attr("width", width + margin.left + margin.right)
    .attr("height", height + margin.top + margin.bottom)
