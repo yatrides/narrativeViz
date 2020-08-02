@@ -1,4 +1,5 @@
 async function init(){
+  console.log("YA ENTRE")
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 100, bottom: 30, left: 30},
     width = 460 - margin.left - margin.right,
