@@ -1,6 +1,6 @@
 async function init(){
  // set the dimensions and margins of the graph
- var margin = {top: 20, right: 100, bottom: 30, left: 30},
+ var margin = {top: 10, right: 100, bottom: 30, left: 30},
  width = 800 - margin.left - margin.right,
  height = 400 - margin.top - margin.bottom;
  var crange = ['purple','pink','salmon','magenta','plum'];
@@ -100,7 +100,7 @@ country.append("path")
  .attr("class", "line")
   .attr("fill", "none")
    .attr("stroke", function(d){ return scaleColorCountry(d.key) })
-   .attr("stroke-width", 4)
+   .attr("stroke-width", 2)
    .attr("d", function(d){
      return d3.line()
        .x(function(d) { return x( new Date(d.Year)) })
@@ -121,7 +121,7 @@ country.append("text")
      x(new Date (d.values.Year)) + "," + y(d.values.Proportion_of_Women_Labor_Force) + ")";
  })
  .attr("x", 3)
- .attr("dy", ".35em")
+ .attr("dy", ".30em")
  .text(function(d) {
    return d.name;
  });
