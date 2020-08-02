@@ -24,9 +24,7 @@ async function init(orderType){
  const data2013=data.filter(function(d){ return d.Year=="2013"})
  const dataNotZero=data2013.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
  const sortLabor=dataNotZero.sort(function(b,a) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
- const top5Labor=getTop5(orderType,sortLabor)
- const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
- const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
+ 
 
  // append the svg object to the body of the page
  /*
@@ -110,7 +108,10 @@ var line = d3.line()
 
  // A function that update the chart
  function update() {
-  
+   const top5Labor=getTop5(orderType,sortLabor)
+   const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
+   const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
+   
     svg.append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
@@ -137,10 +138,12 @@ var line = d3.line()
   maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
    // create the Y axis
    y.domain([minValue, maxValue]);
+   console.log(minValue)
+   console.log(maxValue)
 
    svg.selectAll(".myYaxis")
      .transition()
-     .duration(3000)
+     .duration(1000)
      .call(d3.axisLeft().scale(y));
 
      var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
