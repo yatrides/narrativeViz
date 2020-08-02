@@ -126,8 +126,10 @@ async function init(orderType){
 
    // Create different axis with selection
    // Create the X axis:
-   minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
-   maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
+   //minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
+   //maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
+   minYear=new Date (2006)
+   maxYear=new Date (2016)
    x.domain([minYear,maxYear ]);
    svg.selectAll(".myXaxis")
     .transition()
@@ -139,8 +141,10 @@ async function init(orderType){
       )
     );
 
-  minValue=d3.min(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }) 
-  maxValue=d3.max(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }); 
+  //minValue=d3.min(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }) 
+  //maxValue=d3.max(allDataByTop5, function(d) { return d.Avg_Weekly_Hours_Worked_by_Woman }); 
+  minValue=25
+  maxValue=45
    // create the Y axis
    y.domain([minValue, maxValue]);
 
