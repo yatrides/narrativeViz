@@ -1,6 +1,8 @@
 async function init(){
  // set the dimensions and margins of the graph
- var margin = {top: 10, right: 100, bottom: 30, left: 30};
+ var margin = {top: 10, right: 100, bottom: 30, left: 30},
+ width = 800,
+ height = 500 ;
  var crange = ['purple','pink','salmon','magenta','plum'];
 
  const data= await d3.csv("data/women_dataset.csv");
@@ -19,8 +21,8 @@ async function init(){
  // append the svg object to the body of the page
  var svg = d3.select("#chart")
    .append("svg")
-     .attr("width",  margin.left + margin.right)
-     .attr("height",  margin.top + margin.bottom)
+     .attr("width", width + margin.left + margin.right)
+     .attr("height", height + margin.top + margin.bottom)
    .append("g")
      .attr("transform",
            "translate(" + margin.left + "," + margin.top + ")");
