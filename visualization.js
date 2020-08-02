@@ -21,9 +21,9 @@ async function init(orderType){
    d.Avg_Weekly_Hours_Worked_by_Woman=+d.Avg_Weekly_Hours_Worked_by_Woman;
    d.Public_Spending_on_Family_Benefits=+d.Public_Spending_on_Family_Benefits;
 });
- const data2013=data.filter(function(d){ return d.Year=="2013"})
- const dataNotZero=data2013.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
- const sortLabor=dataNotZero.sort(function(b,a) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
+ const dataNotZero=data.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
+ const data2013=dataNotZero.filter(function(d){ return d.Year=="2013"})
+ const sortLabor=data2013.sort(function(b,a) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
  
 
  // append the svg object to the body of the page
