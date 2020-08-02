@@ -26,17 +26,13 @@ body{
  color:#4c4c4c;
  font: 18px Arial, sans-serif;
 }
-#groupButton{
- color:#ef7c7f;
- font: 18px Arial, sans-serif;
- text-align: center;
-}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    width:290px;
+    width:271px;
     background-color: lightpink;
 }
 
@@ -67,12 +63,37 @@ div.leftText {
 } 
 
 div.rightCharts{
-  position: absolute;
+  position: relative;
   left: 300px;
   width: 800px;
   height: 500px;
   background-color: #f1e7e7;
 } 
+
+div.bottomOptions{
+  position: relative;
+  left: 300px;
+  width: 800px;
+  height: 50px;
+ 
+
+}
+.button{
+  background-color: #ef7c7f; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.button:hover {
+  background-color: #ac5454; /* Green */
+  color: white;
+}
+
+
 
 </style>
 </head>
@@ -100,10 +121,12 @@ div.rightCharts{
 
 <p></p>
 <p></p>
-<div id="chart" class="rightCharts">
-  <svg> </svg>
+<div id="chart" class="rightCharts"></div>
+<div id="top5" class="bottomOptions">
+<button class="button">Top 5 countries</button>
+<button class="button">Lowest 5 countries</button>
 </div>
-<div id="legends">
+  <svg> </svg>
 </div>
 
 </body>

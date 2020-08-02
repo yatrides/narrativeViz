@@ -1,8 +1,6 @@
 async function init(){
  // set the dimensions and margins of the graph
  var margin = {top: 10, right: 100, bottom: 30, left: 30},
- width = 800 - margin.left - margin.right,
- height = 250 - margin.top - margin.bottom;
  var crange = ['purple','pink','salmon','magenta','plum'];
 
  const data= await d3.csv("data/women_dataset.csv");
@@ -12,7 +10,7 @@ async function init(){
    d.Public_Spending_on_Family_Benefits=+d.Public_Spending_on_Family_Benefits;
 });
  const data2013=data.filter(function(d){ return d.Year=="2013"})
- var dataNotZero=data2013.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
+ const dataNotZero=data2013.filter(function(d) { return  d.Proportion_of_Women_Labor_Force>0 && d.Avg_Weekly_Hours_Worked_by_Woman>0 && d.Public_Spending_on_Family_Benefits>0 }) 
  const sortLabor=dataNotZero.sort(function(a,b) { return +a.Proportion_of_Women_Labor_Force - +b.Proportion_of_Women_Labor_Force })
  const top5Labor=sortLabor.filter(function(d,i){ return i>20 })
  const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
