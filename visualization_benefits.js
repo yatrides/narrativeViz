@@ -235,7 +235,7 @@ async function init(orderType){
             }
         };
         
-        svg.selectAll('label').each(insertLinebreaks);
+        svg.selectAll('.label').each(insertLinebreaks);
         }
  update()
 }
