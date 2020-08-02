@@ -118,7 +118,7 @@ const sortLabor=data2013.sort(function(b,a) { return +a.Public_Spending_on_Famil
  function update() {
    const top5Labor=getTop5(orderType,sortLabor)
    const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
-   const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
+   const allDataByTop5= dataNotZero.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
 
 
    // Create new data with the selection?
