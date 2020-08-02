@@ -163,8 +163,7 @@ async function init(orderType){
          .enter().append("g")
          .attr("class", "country");
         
-       country.enter()
-       .append("g")
+       country
        .append("path")
       // .merge(country)
        // .transition()
