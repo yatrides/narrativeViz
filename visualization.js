@@ -29,6 +29,7 @@ async function init(orderType){
  const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
 
  // append the svg object to the body of the page
+ /*
  var svg = d3.select("#chart")
    .append("svg")
      .attr("width", width + margin.left + margin.right)
@@ -36,6 +37,7 @@ async function init(orderType){
    .append("g")
      .attr("transform",
            "translate(" + margin.left + "," + margin.top + ")");
+  */
 
 
  //list of groups
@@ -104,6 +106,15 @@ var line = d3.line()
 
  // A function that update the chart
  function update() {
+
+  var svg = d3.select("#chart")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  
+    svg.append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
    // Create new data with the selection?
    //var dataFilter = allDataByTop5.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
