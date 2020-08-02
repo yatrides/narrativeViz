@@ -166,7 +166,7 @@ async function init(orderType){
        country.enter()
        .append("g")
        .append("path")
-       .merge(country)
+      // .merge(country)
        // .transition()
        // .duration(5000)
          .attr("class", "pline")
@@ -181,11 +181,12 @@ async function init(orderType){
            })
 
     var totalLength = d3.select(".pline").node().getTotalLength();
+    console.log("totalLength:" + totalLength)
       d3.selectAll(".pline")
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
-        .duration(10000)
+        .duration(5000)
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0)
         
@@ -201,7 +202,7 @@ async function init(orderType){
            return "translate(" +
              x(new Date (d.values.Year)) + "," + y(d.values.Proportion_of_Women_Labor_Force) + ")";
          })
-         .attr("x", 3)
+         .attr("x", 10)
          .attr("dy", ".35em")
          .text(function(d) {
            return d.name;
@@ -212,6 +213,7 @@ async function init(orderType){
           .duration(750)
           .attr("transform", function(d) {
             var last =  d.values[27];
+            console.log("last.length"+ d.values.length)
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
         }
