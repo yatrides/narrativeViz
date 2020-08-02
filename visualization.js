@@ -140,6 +140,16 @@ async function init(orderType){
       )
     );
 
+    svg.selectAll(".myXaxis")
+    .append("g")
+    .append("text")
+    //.attr("transform", "rotate(-90)")
+    .attr("y", 4) 
+    .attr("x", width+10)
+    //.style("text-anchor", "end")
+    .style("fill","black")
+    .text("Year");
+
   minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }) 
   maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
    // create the Y axis
@@ -149,6 +159,16 @@ async function init(orderType){
      .transition()
      .duration(1000)
      .call(d3.axisLeft().scale(y));
+
+   svg.selectAll(".myYaxis")
+     .append("g")
+     .append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("y", -25) 
+     .attr("x", -30)
+     //.style("text-anchor", "end")
+     .style("fill","black")
+     .text('% Women Labor Force');
 
      var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
      .key(function(d) { return d.Entity;})
