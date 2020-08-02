@@ -42,6 +42,10 @@ async function init(orderType){
    .attr("width", width + margin.left + margin.right)
    .attr("height", height + margin.top + margin.bottom)
 
+  svg.append("g")
+   .attr("transform",
+         "translate(" + margin.left + "," + margin.top + ")");
+
  //list of groups
  var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
 
@@ -73,7 +77,8 @@ async function init(orderType){
  //  .tickFormat(d3.timeFormat("%Y"));
 
  var xAxis = svg.append("g")
-   .attr("transform", "translate("+margin.left+"," + height + ")")
+   //.attr("transform", "translate("+margin.left+"," + height + ")")
+   attr("transform", "translate(0," + height + ")")
    .attr("class","myXaxis")
    //.call(xAxis);
 
@@ -87,7 +92,7 @@ async function init(orderType){
    .range([ height, 0 ]);
 
  var yAxis= svg.append("g")
-    .attr("transform", "translate("+margin.left+", 0)")
+    //.attr("transform", "translate("+margin.left+", 0)")
     .attr("class","myYaxis")
     //d3.axisLeft().scale(y);
     //.call(yAxis);
@@ -111,9 +116,7 @@ async function init(orderType){
    const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
    const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
    
-    svg.append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+
 
    // Create new data with the selection?
    //var dataFilter = allDataByTop5.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
