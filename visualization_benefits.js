@@ -219,7 +219,7 @@ async function init(orderType){
         .append("text")
          .datum(function(d) {
            return {
-             name: d.key,
+             name: d.key+"              ",
              values: d.values[d.values.length-1]
            };
          })
@@ -229,7 +229,7 @@ async function init(orderType){
              x(new Date (d.values.Year)) + "," + y(d.values.Public_Spending_on_Family_Benefits) + ")";
          })
          .attr("x", 10)
-         .attr("dy", ".35em")
+         .attr("dy", ".5em")
          .text(function(d) {
            return d.name;
          });
@@ -242,19 +242,6 @@ async function init(orderType){
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Public_Spending_on_Family_Benefits) + ")";
           })
 
-          var insertLinebreaks = function (d) {
-            var el = d3.select(this);
-            var words = d.split(' ');
-            el.text('');
-        
-            for (var i = 0; i < words.length; i++) {
-                var tspan = el.append('tspan').text(words[i]);
-                if (i > 0)
-                    tspan.attr('x', 0).attr('dy', '15');
-            }
-        };
-        
-        svg.selectAll('.label').each(insertLinebreaks);
-        }
+         
  update()
 }
