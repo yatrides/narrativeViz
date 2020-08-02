@@ -216,7 +216,6 @@ async function init(orderType){
           .duration(5000)
           .attr("transform", function(d) {
             var last =  d.values[27];
-            console.log("last.length"+ d.values.length)
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Avg_Weekly_Hours_Worked_by_Woman) + ")";
           })
         }
