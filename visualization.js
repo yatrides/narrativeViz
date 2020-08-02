@@ -100,7 +100,7 @@ country.append("path")
  .attr("class", "line")
   .attr("fill", "none")
    .attr("stroke", function(d){ return scaleColorCountry(d.key) })
-   .attr("stroke-width", 2)
+   .attr("stroke-width", 4)
    .attr("d", function(d){
      return d3.line()
        .x(function(d) { return x( new Date(d.Year)) })
@@ -121,7 +121,7 @@ country.append("text")
      x(new Date (d.values.Year)) + "," + y(d.values.Proportion_of_Women_Labor_Force) + ")";
  })
  .attr("x", 3)
- .attr("dy", ".30em")
+ .attr("dy", ".35em")
  .text(function(d) {
    return d.name;
  });
