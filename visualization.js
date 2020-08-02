@@ -1,10 +1,3 @@
-async function init(orderType){
- // set the dimensions and margins of the graph
- var margin = {top: 10, right: 100, bottom: 30, left: 30},
- width = 800 - margin.left - margin.right,
- height = 500 - margin.top - margin.bottom;
- var crange = ['purple','pink','salmon','magenta','plum'];
-
 function getTop5(orderType,ds){
   if(orderType){
     return ds.slice(0, 10);
@@ -13,6 +6,13 @@ function getTop5(orderType,ds){
     return ds.slice(data.length-10, data.length);
   }
 }
+
+async function init(orderType){
+ // set the dimensions and margins of the graph
+ var margin = {top: 10, right: 100, bottom: 30, left: 30},
+ width = 800 - margin.left - margin.right,
+ height = 500 - margin.top - margin.bottom;
+ var crange = ['purple','pink','salmon','magenta','plum'];
 
 
  const data= await d3.csv("data/women_dataset.csv");
