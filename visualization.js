@@ -18,132 +18,170 @@ async function init(){
  const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
  const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
 
- update()
+ // append the svg object to the body of the page
+ var svg = d3.select("#chart")
+   .append("svg")
+     .attr("width", width + margin.left + margin.right)
+     .attr("height", height + margin.top + margin.bottom)
+   .append("g")
+     .attr("transform",
+           "translate(" + margin.left + "," + margin.top + ")");
 
+
+ //list of groups
+ var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
+
+ 
+ // add the options to the button
+ d3.select("#groupButton")
+   .selectAll('myOptions')
+    .data(allGroup)
+   .enter()
+   .append('option')
+   .text(function (d) { return d; }) // text showed in the menu
+   .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+ // A color scale: one color for each group
+ var myColor = d3.scaleOrdinal()
+   .domain(allGroup)
+   .range(crange);
+
+
+
+ // Add X axis --> it is a date format
+ minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
+ maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
+
+ var x = d3.scaleTime()
+     .domain([minYear,maxYear])
+     .range([ 0, width ])
+
+ var xAxis = d3.axisBottom(x)
+   .tickFormat(d3.timeFormat("%Y"));
+
+ svg.append("g")
+   .attr("transform", "translate(0," + height + ")")
+   .attr("class","myXaxis")
+   .call(xAxis);
+
+ // Add Y axis
+
+
+ minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force}) 
+ maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
+ // create the Y axis
+
+ var y = d3.scaleLinear()
+   .domain( [minValue,maxValue ])
+   .range([ height, 0 ]);
+ var yAxis= d3.axisLeft().scale(y);
+ svg.append("g")
+    .attr("class","myYaxis")
+   .call(yAxis);
+
+   var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
+   .key(function(d) { return d.Entity;})
+   .entries(allDataByTop5);
+
+   var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
+   var scaleColorCountry = d3.scaleOrdinal()
+       .domain(colorByCountry)
+       .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
+
+var line = d3.line()
+ 
+
+ 
+ // Initialize line with group a
+
+
+   country.select(".label")
+   .transition()
+   .duration(750)
+   .attr("transform", function(d) {
+     var last =  d.values[27];
+     return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
+   })
 
      
 
  // A function that update the chart
- function update() {
+ function update(selectedGroup) {
 
-   // append the svg object to the body of the page
- var svg = d3.select("#chart")
- .append("svg")
-   .attr("width", width + margin.left + margin.right)
-   .attr("height", height + margin.top + margin.bottom)
- .append("g")
-   .attr("transform",
-         "translate(" + margin.left + "," + margin.top + ")");
+   // Create new data with the selection?
+   var dataFilter = allDataByTop5.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
+   // Create different axis with selection
+   // Create the X axis:
+   minYear=d3.min(dataFilter, function(d) { return new Date (d.Year) }) 
+   maxYear=d3.max(dataFilter, function(d) { return new Date (d.Year) }); 
+   x.domain([minYear,maxYear ]);
+   svg.selectAll(".myXaxis").transition()
+     .duration(3000)
+     .call(xAxis);
 
-//list of groups
-var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
+     minValue=d3.min(dataFilter, function(d) { return d.value }) 
+     maxValue=d3.max(dataFilter, function(d) { return d.value }); 
+   // create the Y axis
+   y.domain([minValue, maxValue]);
 
+   svg.selectAll(".myYaxis")
+     .transition()
+     .duration(3000)
+     .call(yAxis);
 
-// add the options to the button
-d3.select("#groupButton")
- .selectAll('myOptions')
-  .data(allGroup)
- .enter()
- .append('option')
- .text(function (d) { return d; }) // text showed in the menu
- .attr("value", function (d) { return d; }) // corresponding value returned by the button
+     var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
+     .key(function(d) { return d.Entity;})
+     .entries(allDataByTop5);
+ 
+     var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
+     var scaleColorCountry = d3.scaleOrdinal()
+         .domain(colorByCountry)
+         .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
 
-// A color scale: one color for each group
-var myColor = d3.scaleOrdinal()
- .domain(allGroup)
- .range(crange);
-
-
-
-// Add X axis --> it is a date format
-minYear=d3.min(allDataByTop5, function(d) { return new Date (d.Year) }) 
-maxYear=d3.max(allDataByTop5, function(d) { return new Date (d.Year) }); 
-
-var x = d3.scaleTime()
-   .domain([minYear,maxYear])
-   .range([ 0, width ])
-
-var xAxis = d3.axisBottom(x)
- .tickFormat(d3.timeFormat("%Y"));
-
-svg.append("g")
- .attr("transform", "translate(0," + height + ")")
- .attr("class","myXaxis")
- .call(xAxis);
-
-// Add Y axis
-
-
-minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force}) 
-maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
-// create the Y axis
-
-var y = d3.scaleLinear()
- .domain( [minValue,maxValue ])
- .range([ height, 0 ]);
-var yAxis= d3.axisLeft().scale(y);
-svg.append("g")
-  .attr("class","myYaxis")
- .call(yAxis);
-
- var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
- .key(function(d) { return d.Entity;})
- .entries(allDataByTop5);
-
- var colorByCountry = groupByEntity.map(function(d){ return d.key }) 
- var scaleColorCountry = d3.scaleOrdinal()
-     .domain(colorByCountry)
-     .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
-
-var line = d3.line()
-
-
-var country = svg.selectAll(".country")
-.data(groupByEntity)
-.enter().append("g")
-.attr("class", "country");
-
-country.append("path")
-.attr("class", "line")
-.attr("fill", "none")
- .attr("stroke", function(d){ return scaleColorCountry(d.key) })
- .attr("stroke-width", 2)
- .attr("d", function(d){
-   return d3.line()
-     .x(function(d) { return x( new Date(d.Year)) })
-     .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
-     (d.values)
- })
-
-country.append("text")
-.datum(function(d) {
- return {
-   name: d.key,
-   values: d.values[27]
- };
-})
-.attr("class", "label")
-.attr("transform", function(d) {
- return "translate(" +
-   x(new Date (d.values.Year)) + "," + y(d.values.Proportion_of_Women_Labor_Force) + ")";
-})
-.attr("x", 3)
-.attr("dy", ".35em")
-.text(function(d) {
- return d.name;
-});
-
-// Initialize line with group a
-
-
- country.select(".label")
- .transition()
- .duration(750)
- .attr("transform", function(d) {
-   var last =  d.values[27];
-   return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
- })
-}
-
+         var country = svg.selectAll(".country")
+         .data(groupByEntity)
+         .enter().append("g")
+         .attr("class", "country");
+        
+        country.append("path")
+        .transition()
+        .duration(1500)
+         .attr("class", "line")
+          .attr("fill", "none")
+           .attr("stroke", function(d){ return scaleColorCountry(d.key) })
+           .attr("stroke-width", 2)
+           .attr("d", function(d){
+             return d3.line()
+               .x(function(d) { return x( new Date(d.Year)) })
+               .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
+               (d.values)
+           })
+        
+        country.append("text")
+         .datum(function(d) {
+           return {
+             name: d.key,
+             values: d.values[27]
+           };
+         })
+         .attr("class", "label")
+         .attr("transform", function(d) {
+           return "translate(" +
+             x(new Date (d.values.Year)) + "," + y(d.values.Proportion_of_Women_Labor_Force) + ")";
+         })
+         .attr("x", 3)
+         .attr("dy", ".35em")
+         .text(function(d) {
+           return d.name;
+         });
+        
+country.select(".label")
+   .transition()
+   .duration(750)
+   .attr("transform", function(d) {
+     var last =  d.values[27];
+     return "translate(" + x(new Date (last.Year)) + "," + y(last.d[selectedGroup]) + ")";
+   })
+ }
 }
