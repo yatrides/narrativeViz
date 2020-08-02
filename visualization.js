@@ -136,7 +136,7 @@ var line = d3.line()
         .transition()
         .duration(5000)
         .ease(d3.easeLinear)
-        .attr("stroke-dashoffset", 0);
+        .attr("stroke-dashoffset", 0)
          .attr("class", "line")
           .attr("fill", "none")
            .attr("stroke", function(d){ return scaleColorCountry(d.key) })
