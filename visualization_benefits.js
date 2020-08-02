@@ -201,7 +201,7 @@ async function init(orderType){
          .datum(function(d) {
            return {
              name: d.key,
-             values: d[d.values.length-1]
+             values: d.values[d.values.length-1]
            };
          })
          .attr("class", "label")
@@ -219,7 +219,7 @@ async function init(orderType){
           .transition()
           .duration(5000)
           .attr("transform", function(d) {
-            var last =  d.values[27];
+            var last =  d.values[d.values.length-1];
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Public_Spending_on_Family_Benefits) + ")";
           })
         }
