@@ -190,5 +190,5 @@ var line = d3.line()
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
         }
- update()
+ update(orderType)
 }
