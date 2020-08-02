@@ -140,7 +140,7 @@ async function init(orderType){
         d3.timeFormat("%Y")
       )
     );
-    svg_viz.selectAll(".myXaxis")
+    svg.selectAll(".myXaxis")
     .append("g")
     .append("text")
     //.attr("transform", "rotate(-90)")
@@ -162,7 +162,7 @@ async function init(orderType){
      .duration(1000)
      .call(d3.axisLeft().scale(y));
 
-     svg_viz.selectAll(".myYaxis")
+     svg.selectAll(".myYaxis")
      .append("g")
      .append("text")
      .attr("transform", "rotate(-90)")
