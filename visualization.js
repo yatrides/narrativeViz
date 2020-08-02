@@ -132,7 +132,7 @@ var line = d3.line()
          .enter().append("g")
          .attr("class", "country");
         
-        country.append("path")
+        var path=country.append("path")
         .transition()
         .duration(5000)
         .ease(d3.easeLinear)
@@ -147,6 +147,15 @@ var line = d3.line()
                .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
                (d.values)
            })
+
+      var totalLength = path.node().getTotalLength();
+      path
+      .attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+        .duration(4000)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0)
         
         country.append("text")
          .datum(function(d) {
