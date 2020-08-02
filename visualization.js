@@ -144,10 +144,13 @@ var line = d3.line()
 
          var country = svg.selectAll(".country")
          .data(groupByEntity)
-         .enter().append("g")
-         .attr("class", "country");
+         //.enter().append("g")
+         //.attr("class", "country");
         
-       country.append("path")
+       country.enter()
+       .append("g")
+       .append("path")
+       .merge(country)
        // .transition()
        // .duration(5000)
          .attr("class", "pline")
@@ -166,7 +169,7 @@ var line = d3.line()
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
-        .duration(6000)
+        .duration(10000)
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0)
         
