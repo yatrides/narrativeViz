@@ -169,7 +169,7 @@ var line = d3.line()
           .duration(750)
           .attr("transform", function(d) {
             var last =  d.values[27];
-            return "translate(" + x(new Date (last.Year)) + "," + y(last.d.valuesProportion_of_Women_Labor_Force) + ")";
+            return "translate(" + x(new Date (last.Year)) + "," + y(last.valuesProportion_of_Women_Labor_Force) + ")";
           })
         }
  update()
