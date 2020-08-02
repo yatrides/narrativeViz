@@ -201,7 +201,7 @@ async function init(orderType){
          .datum(function(d) {
            return {
              name: d.key,
-             values: d.values[27]
+             values: d[d.values.length-1]
            };
          })
          .attr("class", "label")
