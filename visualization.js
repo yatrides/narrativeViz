@@ -132,12 +132,10 @@ var line = d3.line()
          .enter().append("g")
          .attr("class", "country");
         
-        var path=country.append("path")
-        .transition()
-        .duration(5000)
-        .ease(d3.easeLinear)
-        .attr("stroke-dashoffset", 0)
-         .attr("class", "line")
+       country.append("path")
+       // .transition()
+       // .duration(5000)
+         .attr("class", "pline")
           .attr("fill", "none")
            .attr("stroke", function(d){ return scaleColorCountry(d.key) })
            .attr("stroke-width", 2)
@@ -148,8 +146,8 @@ var line = d3.line()
                (d.values)
            })
 
-      var totalLength = path.node().getTotalLength();
-      path
+      var totalLength = d3.select(".pline").node().getTotalLength();
+      d3.selectAll(".pline")
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
