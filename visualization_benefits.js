@@ -213,7 +213,7 @@ async function init(orderType){
         
         country.select(".label")
           .transition()
-          .duration(750)
+          .duration(5000)
           .attr("transform", function(d) {
             var last =  d.values[27];
             console.log("last.length"+ d.values.length)
