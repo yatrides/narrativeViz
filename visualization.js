@@ -100,7 +100,7 @@ country.append("path")
  .attr("class", "line")
   .attr("fill", "none")
    .attr("stroke", function(d){ return scaleColorCountry(d.key) })
-   .attr("stroke-width", 4)
+   .attr("stroke-width", 2)
    .attr("d", function(d){
      return d3.line()
        .x(function(d) { return x( new Date(d.Year)) })
