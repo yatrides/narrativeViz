@@ -8,7 +8,7 @@ function getTop5(orderType,ds){
 }
 
 async function init(orderType){
-  console.log("YA ENTRE")
+
  // set the dimensions and margins of the graph
  var margin = {top: 10, right: 100, bottom: 30, left: 30},
  width = 800 - margin.left - margin.right,
@@ -119,7 +119,7 @@ async function init(orderType){
    const top5Labor=getTop5(orderType,sortLabor)
    const countryList=  d3.map(top5Labor, function(d){return(d.Entity)}).keys()
    const allDataByTop5= data.filter(function(d,i){ return countryList.indexOf(d.Entity)>=0 })
-   
+   console.log("YA ENTRE")
 
 
    // Create new data with the selection?
