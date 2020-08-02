@@ -78,7 +78,7 @@ async function init(orderType){
 
  var xAxis = svg.append("g")
    //.attr("transform", "translate("+margin.left+"," + height + ")")
-   attr("transform", "translate(0," + height + ")")
+   .attr("transform", "translate(0," + height + ")")
    .attr("class","myXaxis")
    //.call(xAxis);
 
