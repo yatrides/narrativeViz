@@ -94,10 +94,10 @@ var line = d3.line()
      
 
  // A function that update the chart
- function update(selectedGroup) {
+ function update() {
 
    // Create new data with the selection?
-   var dataFilter = allDataByTop5.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
+   //var dataFilter = allDataByTop5.map(function(d){return { Year: new Date(d.Year), value:d[selectedGroup]} })
 
    // Create different axis with selection
    // Create the X axis:
@@ -108,8 +108,8 @@ var line = d3.line()
      .duration(3000)
      .call(xAxis);
 
-     minValue=d3.min(allDataByTop5, function(d) { return d.value }) 
-     maxValue=d3.max(allDataByTop5, function(d) { return d.value }); 
+     minValue=d3.min(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }) 
+     maxValue=d3.max(allDataByTop5, function(d) { return d.Proportion_of_Women_Labor_Force }); 
    // create the Y axis
    y.domain([minValue, maxValue]);
 
@@ -169,7 +169,7 @@ var line = d3.line()
           .duration(750)
           .attr("transform", function(d) {
             var last =  d.values[27];
-            return "translate(" + x(new Date (last.Year)) + "," + y(last.d[Proportion_of_Women_Labor_Force]) + ")";
+            return "translate(" + x(new Date (last.Year)) + "," + y(last.d.valuesProportion_of_Women_Labor_Force) + ")";
           })
         }
  update()
