@@ -186,6 +186,7 @@ async function init(orderType){
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
+        .delay(function(d, i) { return i * 1000; })
         .duration(5000)
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0)
