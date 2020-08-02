@@ -190,7 +190,9 @@ async function init(orderType){
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0)
         
-        country.append("text")
+        country
+        .append("g")
+        .append("text")
          .datum(function(d) {
            return {
              name: d.key,
