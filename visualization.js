@@ -3,7 +3,7 @@ function getTop5(orderType,ds){
     return ds.slice(0, 10);
   }
   else{
-    return ds.slice(data.length-10, data.length);
+    return ds.slice(ds.length-10, ds.length);
   }
 }
 
