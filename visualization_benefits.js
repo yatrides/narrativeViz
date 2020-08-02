@@ -140,6 +140,15 @@ async function init(orderType){
         d3.timeFormat("%Y")
       )
     );
+    svg_viz.selectAll(".myXaxis")
+    .append("g")
+    .append("text")
+    //.attr("transform", "rotate(-90)")
+    .attr("y", 4) 
+    .attr("x", margin + width - 20)
+    //.style("text-anchor", "end")
+    .style("fill","black")
+    .text("Year");
 
   minValue=d3.min(allDataByTop5, function(d) { return d.Public_Spending_on_Family_Benefits }) 
   maxValue=d3.max(allDataByTop5, function(d) { return d.Public_Spending_on_Family_Benefits }); 
@@ -152,6 +161,16 @@ async function init(orderType){
      .transition()
      .duration(1000)
      .call(d3.axisLeft().scale(y));
+
+     svg_viz.selectAll(".myYaxis")
+     .append("g")
+     .append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("y", -25) 
+     .attr("x", -15)
+     //.style("text-anchor", "end")
+     .style("fill","black")
+     .text("Public spending on Family Benefits %");
 
      var groupByEntity = d3.nest() // nest function allows to group the calculation per level of a factor
      .key(function(d) { return d.Entity;})
