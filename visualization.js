@@ -148,7 +148,7 @@ var line = d3.line()
          //.attr("class", "country");
         
        country.enter()
-       .append("g")
+       //.append("g")
        .append("path")
        .merge(country)
        // .transition()
