@@ -166,8 +166,8 @@ async function init(orderType){
        country
        .append("path")
       // .merge(country)
-       // .transition()
-       // .duration(5000)
+        .transition()
+        .duration(5000)
          .attr("class", "pline")
           .attr("fill", "none")
            .attr("stroke", function(d){ return scaleColorCountry(d.key) })
@@ -176,7 +176,8 @@ async function init(orderType){
              return d3.line()
                .x(function(d) { return x( new Date(d.Year)) })
                .y(function(d) { return y(+d.Proportion_of_Women_Labor_Force) })
-               (d.values)
+               (d.values)            
+
            })
 
     var totalLength = d3.select(".pline").node().getTotalLength();
@@ -186,7 +187,7 @@ async function init(orderType){
       //.attr("stroke-dashoffset", totalLength)
       .transition()
         //.delay(function(d, i) { return i * 1000; })
-        .duration(5000)
+        .duration(10000)
        // .ease(d3.easeLinear)
        // .attr("stroke-dashoffset", 0)
         
