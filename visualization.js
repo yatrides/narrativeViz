@@ -1,7 +1,7 @@
 async function init(){
  // set the dimensions and margins of the graph
- var margin = {top: 10, right: 100, bottom: 30, left: 30},
- width = 460 - margin.left - margin.right,
+ var margin = {top: 20, right: 100, bottom: 30, left: 30},
+ width = 800 - margin.left - margin.right,
  height = 400 - margin.top - margin.bottom;
  var crange = ['purple','pink','salmon','magenta','plum'];
 
