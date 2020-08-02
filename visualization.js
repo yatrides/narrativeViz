@@ -161,7 +161,7 @@ async function init(orderType){
          var country = svg.selectAll(".country")
          .data(groupByEntity)
          //.enter().append("g")
-         //.attr("class", "country");
+         .attr("class", "country");
         
        country.enter()
        .append("g")
