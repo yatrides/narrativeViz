@@ -36,15 +36,17 @@ async function init(orderType){
      .attr("transform",
            "translate(" + margin.left + "," + margin.top + ")");
   */
+ var svg = d3.select("#lineChart");
+ svg.exit().remove();
 
  var svg = d3.select("#lineChart")
-    svg.exit()
  //.append("svg")
    .attr("width", width + margin.left + margin.right)
    .attr("height", height + margin.top + margin.bottom)
    .append("g")
    .attr("transform",
          "translate(" + margin.left + "," + margin.top + ")");
+  
 
  //list of groups
  var allGroup =["Proportion_of_Women_Labor_Force","Avg_Weekly_Hours_Worked_by_Woman","Public_Spending_on_Family_Benefits"] 
