@@ -182,8 +182,8 @@ async function init(orderType){
     var totalLength = d3.select(".pline").node().getTotalLength();
     console.log("totalLength:" + totalLength)
       d3.selectAll(".pline")
-      .attr("stroke-dasharray", totalLength + " " + totalLength)
-      .attr("stroke-dashoffset", totalLength)
+      //.attr("stroke-dasharray", totalLength + " " + totalLength)
+      //.attr("stroke-dashoffset", totalLength)
       .transition()
         //.delay(function(d, i) { return i * 1000; })
         .duration(5000)
