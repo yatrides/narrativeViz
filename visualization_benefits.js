@@ -167,7 +167,7 @@ async function init(orderType){
      .append("text")
      .attr("transform", "rotate(-90)")
      .attr("y", -25) 
-     .attr("x", -30)
+     .attr("x", -40)
      //.style("text-anchor", "end")
      .style("fill","black")
      .text("% Public spending on Family Benefits");
@@ -228,8 +228,8 @@ async function init(orderType){
            return "translate(" +
              x(new Date (d.values.Year)) + "," + y(d.values.Public_Spending_on_Family_Benefits) + ")";
          })
-         .attr("x", 10)
-         .attr("dy", "10em")
+         .attr("x", 5)
+         .attr("dy", ".35em")
          .text(function(d) {
            return d.name;
          });
