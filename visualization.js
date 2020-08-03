@@ -249,6 +249,7 @@ if(orderType){
           //svg.append("g")
          // svg.selectAll(".circle")
          ann
+          .append("g")
           .append('circle')
           .transition()
           .duration(7000)
