@@ -280,11 +280,23 @@ async function init(orderType){
               .transition()
               .duration(7000)
               .style('opacity', 0.8)
-              .attr('font-size', 15)
+              .attr('font-size', 16)
               .attr('fill', 'red')
-              .attr('x', '102.7523' )
+              .attr('x', '103.7523' )
               .attr('y', '21' )
               .text("Chile's Labor Code was of 45 hour workweek before 2017");
+
+            ann
+              .append("g")
+              .append('text')
+              .transition()
+              .duration(7000)
+              .style('opacity', 0.8)
+              .attr('font-size', 16)
+              .attr('fill', 'red')
+              .attr('x', '103.7523' )
+              .attr('y', '34' )
+              .text("45 hour workweek before 2017");
           }
         }
  update()
