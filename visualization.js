@@ -241,7 +241,7 @@ async function init(orderType){
           })
 if(orderType){
 
-     var ann = svg.selectAll(".ann")
+     var ann = svg//.selectAll(".ann")
          .enter().append("g")
          .attr("class", "ann");
   
