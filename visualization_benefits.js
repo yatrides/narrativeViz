@@ -242,6 +242,7 @@ async function init(orderType){
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Public_Spending_on_Family_Benefits) + ")";
           })
         }
+
          
  update()
 }

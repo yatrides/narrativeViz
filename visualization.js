@@ -239,6 +239,41 @@ async function init(orderType){
             var last =  d.values[d.values.length-1];
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
+
+      d3.selectAll("#lineChart")
+          .append('circle')
+          .transition()
+          .duration(7000)
+          .attr('cx', '601.487' )
+          .attr('cy', '244.59' )
+          .attr('r', '7' )
+          .attr('fill','orange')
+          .attr('stroke-width', '1');
+
+      d3.selectAll("#lineChart")
+        .append('line')
+        .transition()
+        .duration(7000)
+        .style("stroke-dasharray", ("5, 5"))
+        .attr("fill", "none")
+        .attr('x1', '601.487' )
+        .attr('y1', '244.59' )
+        .attr('x2', '601.487' )
+        .attr('y2', '350' )
+        .attr('stroke','orange')
+        .attr('stroke-width', '2');
+        
+
+      d3.selectAll("#lineChart")
+        .append('text')
+        .transition()
+        .duration(7000)
+        .style('opacity', 0.8)
+        .attr('font-size', 15)
+        .attr('fill', '#4c4c4c')
+        .attr('x', '550' )
+        .attr('y', '360' )
+        .text('Portugal crisis 2010-2014');
         }
  update()
 }
