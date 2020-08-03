@@ -164,8 +164,8 @@ async function init(orderType){
      .append("g")
      .append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", -15) 
-     .attr("x", -120)
+     .attr("y", -40) 
+     .attr("x", 0)
      //.style("text-anchor", "end")
      .style("fill","black")
      .text('% Women Labor Force');

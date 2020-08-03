@@ -167,8 +167,8 @@ async function init(orderType){
      .append("g")
      .append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", -25) 
-     .attr("x", -40)
+     .attr("y", -30) 
+     .attr("x", 0)
      //.style("text-anchor", "end")
      .style("fill","black")
      .text("Avg weekly hours worked");
