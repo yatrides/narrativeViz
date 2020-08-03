@@ -39,10 +39,8 @@ async function init(orderType){
   */
  var svg = d3.select("#lineChart");
  var group=svg.selectAll("g")
- var ann=d3.selectAll("#lineChart")
- var groupAnn=ann.selectAll("circle")
  group.remove();
- groupAnn.remove();
+
 
  
 
