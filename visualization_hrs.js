@@ -247,6 +247,17 @@ async function init(orderType){
 
             ann
               .append("g")
+              .append('circle')
+              .transition()
+              .duration(7000)
+              .attr('cx', '102.7523' ) 
+              .attr('cy', '81.1365' )
+              .attr('r', '7' )
+              .attr('fill','red')
+              .attr('stroke-width', '1');
+
+            ann
+              .append("g")
               .append('line')
               .transition()
               .duration(7000)
