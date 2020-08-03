@@ -38,7 +38,7 @@ async function init(orderType){
            "translate(" + margin.left + "," + margin.top + ")");
   */
  var svg = d3.select("#lineChart");
- var group=svg.select("g")
+ var group=svg.selectAll("g")
  group.remove();
 
  var svg = d3.select("#lineChart")
