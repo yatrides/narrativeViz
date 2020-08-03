@@ -38,9 +38,9 @@ async function init(orderType){
            "translate(" + margin.left + "," + margin.top + ")");
   */
  var svg = d3.select("#lineChart");
- var group=svg.select("g")
+ var group=svg.selectAll("g")
  var ann=d3.selectAll("#lineChart")
- var groupAnn=ann.select("circle")
+ var groupAnn=ann.selectAll("circle")
  group.remove();
  groupAnn.remove();
 
