@@ -274,6 +274,67 @@ async function init(orderType){
         .attr('x', '550' )
         .attr('y', '360' )
         .text('Portugal crisis 2010-2014');
+
+        d3.selectAll("#lineChart")
+        .append('circle')
+        .transition()
+        .duration(7000)
+        .attr('cx', '404.595' ) 
+        .attr('cy', '186.38' )
+        .attr('r', '7' )
+        .attr('fill','#984EA3')
+        .attr('stroke-width', '1');
+
+    d3.selectAll("#lineChart")
+      .append('line')
+      .transition()
+      .duration(7000)
+      .style('opacity', 0.8)
+      .style("stroke-dasharray", ("5, 5"))
+      .attr("fill", "none")
+      .attr('x1', '404.595' )
+      .attr('y1', '186.38' )
+      .attr('x2', '404.595' )
+      .attr('y2', '400' )
+      .attr('stroke','#984EA3')
+      .attr('stroke-width', '2');
+      
+
+    d3.selectAll("#lineChart")
+      .append('text')
+      .transition()
+      .duration(7000)
+      .style('opacity', 0.8)
+      .attr('font-size', 15)
+      .attr('fill', '#4c4c4c')
+      .attr('x', '404.595' )
+      .attr('y', '401' )
+      .text('Baltic financial crisis 2007-2010');
+
+      d3.selectAll("#lineChart")
+          .append('circle')
+          .transition()
+          .duration(7000)
+          .attr('cx', '404.595' ) 
+          .attr('cy', '174.147' )
+          .attr('r', '7' )
+          .attr('fill','#377EB8')
+          .attr('stroke-width', '1');
+
+      d3.selectAll("#lineChart")
+        .append('line')
+        .transition()
+        .duration(7000)
+        .style('opacity', 0.3)
+        .style("stroke-dasharray", ("5, 5"))
+        .attr("fill", "none")
+        .attr('x1', '404.595' )
+        .attr('y1', '174.147' )
+        .attr('x2', '404.595' )
+        .attr('y2', '400' )
+        .attr('stroke','#377EB8')
+        .attr('stroke-width', '2');
+
         }
  update()
 }
