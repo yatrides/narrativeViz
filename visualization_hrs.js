@@ -242,6 +242,36 @@ async function init(orderType){
             var last = d.values[d.values.length-1];
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Avg_Weekly_Hours_Worked_by_Woman) + ")";
           })
+
+          if(orderType){
+
+            ann
+              .append("g")
+              .append('line')
+              .transition()
+              .duration(7000)
+              .style('opacity', 0.8)
+              .style("stroke-dasharray", ("5, 5"))
+              .attr("fill", "none")
+              .attr('x1', '102.7523' )
+              .attr('y1', '81.1365' )
+              .attr('x2', '102.7523' )
+              .attr('y2', '20' )
+              .attr('stroke','red')
+              .attr('stroke-width', '2');
+
+            ann
+              .append("g")
+              .append('text')
+              .transition()
+              .duration(7000)
+              .style('opacity', 0.8)
+              .attr('font-size', 15)
+              .attr('fill', 'red')
+              .attr('x', '102.7523' )
+              .attr('y', '21' )
+              .text("Chile's Labor Code was of 45 hour workweek before 2017");
+          }
         }
  update()
 }
