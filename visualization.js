@@ -38,7 +38,7 @@ async function init(orderType){
            "translate(" + margin.left + "," + margin.top + ")");
   */
  var svg = d3.select("#lineChart");
- var group=svg.selectAll("g")
+ var group=svg.select("g")
  group.remove();
 
  var svg = d3.select("#lineChart")
@@ -239,7 +239,7 @@ async function init(orderType){
             var last =  d.values[d.values.length-1];
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
-
+if(orderType){
       d3.selectAll("#lineChart")
           .append("g")
           .append('circle')
@@ -344,5 +344,6 @@ async function init(orderType){
         .attr('stroke-width', '2');
 
         }
+  }
  update()
 }
