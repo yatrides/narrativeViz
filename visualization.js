@@ -240,11 +240,15 @@ async function init(orderType){
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
 if(orderType){
+
+     var ann = svg.selectAll(".ann")
+         .enter().append("g")
+         .attr("class", "ann");
   
-      d3.selectAll("#lineChart")
+     // d3.selectAll("#lineChart")
           //svg.append("g")
          // svg.selectAll(".circle")
-         country
+         ann
           .append('circle')
           .transition()
           .duration(7000)
@@ -255,7 +259,7 @@ if(orderType){
           .attr('stroke-width', '1');
 
       //d3.selectAll("#lineChart")
-      country
+      ann
         .append("g")
         .append('line')
         .transition()
@@ -271,7 +275,7 @@ if(orderType){
         
 
       //d3.selectAll("#lineChart")
-      country
+      ann
         .append("g")
         .append('text')
         .transition()
@@ -284,7 +288,7 @@ if(orderType){
         .text('Portugal crisis 2010-2014');
 
         //d3.selectAll("#lineChart")
-      country
+        ann
         .append("g")
         .append('circle')
         .transition()
@@ -296,7 +300,7 @@ if(orderType){
         .attr('stroke-width', '1');
 
     //d3.selectAll("#lineChart")
-    country
+    ann
       .append("g")
       .append('line')
       .transition()
@@ -313,7 +317,7 @@ if(orderType){
       
 
     //d3.selectAll("#lineChart")
-    country
+    ann
       .append("g")
       .append('text')
       .transition()
@@ -326,7 +330,7 @@ if(orderType){
       .text('Baltic financial crisis 2007-2010');
 
       //d3.selectAll("#lineChart")
-    country
+      ann
           .append("g")
           .append('circle')
           .transition()
@@ -338,7 +342,7 @@ if(orderType){
           .attr('stroke-width', '1');
 
       //d3.selectAll("#lineChart")
-    country
+      ann
         .append("g")
         .append('line')
         .transition()
