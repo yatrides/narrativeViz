@@ -9,7 +9,7 @@ function getTop5(orderType,ds){
 
 async function init(orderType){
  // set the dimensions and margins of the graph
- var margin = {top: 10, right: 100, bottom: 30, left: 80},
+ var margin = {top: 10, right: 100, bottom: 30, left: 60},
  width = 800 - margin.left - margin.right,
  height = 500 - margin.top - margin.bottom;
  var crange = ['purple','pink','salmon','magenta','plum'];
@@ -164,8 +164,8 @@ async function init(orderType){
      .append("g")
      .append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", -25) 
-     .attr("x", -80)
+     .attr("y", -15) 
+     .attr("x", -120)
      //.style("text-anchor", "end")
      .style("fill","black")
      .text('% Women Labor Force');
