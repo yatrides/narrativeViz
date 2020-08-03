@@ -242,7 +242,8 @@ async function init(orderType){
 if(orderType){
   
       //d3.selectAll("#lineChart")
-          svg.append("g")
+          //svg.append("g")
+          svg.selectAll(".circle")
           .append('circle')
           .transition()
           .duration(7000)
