@@ -284,7 +284,7 @@ async function init(orderType){
               .attr('fill', 'red')
               .attr('x', '103.7523' )
               .attr('y', '21' )
-              .text("Chile's Labor Code was of 45 hour workweek before 2017");
+              .text("Chile's Labor Code was of");
 
             ann
               .append("g")
