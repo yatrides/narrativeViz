@@ -10,7 +10,7 @@ function getTop5(orderType,ds){
 async function init(orderType){
 
  // set the dimensions and margins of the graph
- var margin = {top: 10, right: 100, bottom: 30, left: 50},
+ var margin = {top: 10, right: 100, bottom: 30, left: 60},
  width = 800 - margin.left - margin.right,
  height = 500 - margin.top - margin.bottom;
  var crange = ['purple','pink','salmon','magenta','plum'];
@@ -167,7 +167,7 @@ async function init(orderType){
      .append("g")
      .append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", -30) 
+     .attr("y", -40) 
      .attr("x", 0)
      //.style("text-anchor", "end")
      .style("fill","black")
