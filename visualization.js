@@ -39,7 +39,12 @@ async function init(orderType){
   */
  var svg = d3.select("#lineChart");
  var group=svg.select("g")
+ var ann=d3.selectAll("#lineChart")
+ var groupAnn=ann.select("circle")
  group.remove();
+ groupAnn.remove();
+
+ 
 
  var svg = d3.select("#lineChart")
  //.append("svg")
@@ -241,13 +246,7 @@ async function init(orderType){
           })
 if(orderType){
 
-     var ann = svg//.selectAll(".ann")
-         .enter().append("g")
-         .attr("class", "ann");
-  
-     // d3.selectAll("#lineChart")
-          //svg.append("g")
-         // svg.selectAll(".circle")
+    
          ann
           .append("g")
           .append('circle')
@@ -259,7 +258,7 @@ if(orderType){
           .attr('fill','orange')
           .attr('stroke-width', '1');
 
-      //d3.selectAll("#lineChart")
+     
       ann
         .append("g")
         .append('line')
@@ -275,7 +274,7 @@ if(orderType){
         .attr('stroke-width', '2');
         
 
-      //d3.selectAll("#lineChart")
+     
       ann
         .append("g")
         .append('text')
@@ -288,7 +287,7 @@ if(orderType){
         .attr('y', '360' )
         .text('Portugal crisis 2010-2014');
 
-        //d3.selectAll("#lineChart")
+      
         ann
         .append("g")
         .append('circle')
@@ -300,7 +299,7 @@ if(orderType){
         .attr('fill','#984EA3')
         .attr('stroke-width', '1');
 
-    //d3.selectAll("#lineChart")
+   
     ann
       .append("g")
       .append('line')
@@ -317,7 +316,7 @@ if(orderType){
       .attr('stroke-width', '2');
       
 
-    //d3.selectAll("#lineChart")
+   
     ann
       .append("g")
       .append('text')
@@ -330,7 +329,7 @@ if(orderType){
       .attr('y', '401' )
       .text('Baltic financial crisis 2007-2010');
 
-      //d3.selectAll("#lineChart")
+    
       ann
           .append("g")
           .append('circle')
@@ -342,7 +341,7 @@ if(orderType){
           .attr('fill','#377EB8')
           .attr('stroke-width', '1');
 
-      //d3.selectAll("#lineChart")
+      
       ann
         .append("g")
         .append('line')
