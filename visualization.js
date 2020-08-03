@@ -241,6 +241,7 @@ async function init(orderType){
           })
 
       d3.selectAll("#lineChart")
+          .append("g")
           .append('circle')
           .transition()
           .duration(7000)
@@ -251,6 +252,7 @@ async function init(orderType){
           .attr('stroke-width', '1');
 
       d3.selectAll("#lineChart")
+        .append("g")
         .append('line')
         .transition()
         .duration(7000)
@@ -265,6 +267,7 @@ async function init(orderType){
         
 
       d3.selectAll("#lineChart")
+        .append("g")
         .append('text')
         .transition()
         .duration(7000)
@@ -276,6 +279,7 @@ async function init(orderType){
         .text('Portugal crisis 2010-2014');
 
         d3.selectAll("#lineChart")
+        .append("g")
         .append('circle')
         .transition()
         .duration(7000)
@@ -286,6 +290,7 @@ async function init(orderType){
         .attr('stroke-width', '1');
 
     d3.selectAll("#lineChart")
+      .append("g")
       .append('line')
       .transition()
       .duration(7000)
@@ -301,6 +306,7 @@ async function init(orderType){
       
 
     d3.selectAll("#lineChart")
+      .append("g")
       .append('text')
       .transition()
       .duration(7000)
@@ -312,6 +318,7 @@ async function init(orderType){
       .text('Baltic financial crisis 2007-2010');
 
       d3.selectAll("#lineChart")
+          .append("g")
           .append('circle')
           .transition()
           .duration(7000)
@@ -322,6 +329,7 @@ async function init(orderType){
           .attr('stroke-width', '1');
 
       d3.selectAll("#lineChart")
+        .append("g")
         .append('line')
         .transition()
         .duration(7000)
