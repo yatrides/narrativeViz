@@ -239,7 +239,7 @@ async function init(orderType){
             var last =  d.values[d.values.length-1];
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
-//if(orderType){
+/*if(orderType){
   
       d3.selectAll("#lineChart")
           //svg.append("g")
@@ -345,7 +345,7 @@ async function init(orderType){
         .attr('stroke','#377EB8')
         .attr('stroke-width', '2');
 
-       // }
+        }*/
   }
  update()
 }
