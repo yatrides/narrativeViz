@@ -239,11 +239,12 @@ async function init(orderType){
             var last =  d.values[d.values.length-1];
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
-/*if(orderType){
+if(orderType){
   
       d3.selectAll("#lineChart")
           //svg.append("g")
          // svg.selectAll(".circle")
+         country
           .append('circle')
           .transition()
           .duration(7000)
@@ -253,7 +254,8 @@ async function init(orderType){
           .attr('fill','orange')
           .attr('stroke-width', '1');
 
-      d3.selectAll("#lineChart")
+      //d3.selectAll("#lineChart")
+      country
         .append("g")
         .append('line')
         .transition()
@@ -268,7 +270,8 @@ async function init(orderType){
         .attr('stroke-width', '2');
         
 
-      d3.selectAll("#lineChart")
+      //d3.selectAll("#lineChart")
+      country
         .append("g")
         .append('text')
         .transition()
@@ -280,7 +283,8 @@ async function init(orderType){
         .attr('y', '360' )
         .text('Portugal crisis 2010-2014');
 
-        d3.selectAll("#lineChart")
+        //d3.selectAll("#lineChart")
+      country
         .append("g")
         .append('circle')
         .transition()
@@ -291,7 +295,8 @@ async function init(orderType){
         .attr('fill','#984EA3')
         .attr('stroke-width', '1');
 
-    d3.selectAll("#lineChart")
+    //d3.selectAll("#lineChart")
+    country
       .append("g")
       .append('line')
       .transition()
@@ -307,7 +312,8 @@ async function init(orderType){
       .attr('stroke-width', '2');
       
 
-    d3.selectAll("#lineChart")
+    //d3.selectAll("#lineChart")
+    country
       .append("g")
       .append('text')
       .transition()
@@ -319,7 +325,8 @@ async function init(orderType){
       .attr('y', '401' )
       .text('Baltic financial crisis 2007-2010');
 
-      d3.selectAll("#lineChart")
+      //d3.selectAll("#lineChart")
+    country
           .append("g")
           .append('circle')
           .transition()
@@ -330,7 +337,8 @@ async function init(orderType){
           .attr('fill','#377EB8')
           .attr('stroke-width', '1');
 
-      d3.selectAll("#lineChart")
+      //d3.selectAll("#lineChart")
+    country
         .append("g")
         .append('line')
         .transition()
@@ -345,7 +353,7 @@ async function init(orderType){
         .attr('stroke','#377EB8')
         .attr('stroke-width', '2');
 
-        }*/
+        }
   }
  update()
 }
