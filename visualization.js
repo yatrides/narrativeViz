@@ -240,8 +240,9 @@ async function init(orderType){
             return "translate(" + x(new Date (last.Year)) + "," + y(last.Proportion_of_Women_Labor_Force) + ")";
           })
 if(orderType){
-      d3.selectAll("#lineChart")
-          .append("g")
+  
+      //d3.selectAll("#lineChart")
+          svg.append("g")
           .append('circle')
           .transition()
           .duration(7000)
